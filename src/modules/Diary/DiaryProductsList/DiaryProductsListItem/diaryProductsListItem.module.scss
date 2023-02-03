@@ -1,0 +1,76 @@
+@import '../../../../sass/utils/mixins';
+@import '../../../../sass/utils/vars';
+
+.item {
+    display: flex;
+    align-items: center;
+    width: inherit;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+
+        @include mq(tablet) {
+            margin-bottom: 15px;
+
+        }
+    }
+}
+
+.text {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    @include fonts();
+    color: $color-dark;
+
+
+    &:not(:last-child) {
+        margin-right: 10px;
+
+        @include mq(tablet) {
+            margin-right: 31px;
+        }
+    }
+}
+
+.product {
+    @include mq(mobile-only) {
+        width: 140px;
+    }
+
+    @include mq(tablet) {
+        width: 239px;
+    }
+
+}
+
+.weight {
+    width: 50px;
+
+    @include mq(tablet) {
+        width: 105px;
+        text-align: right;
+    }
+}
+
+.kcal {
+    width: 60px;
+
+    @include mq(tablet) {
+        width: 105px;
+        text-align: right;
+    }
+}
+
+.kcal-text {
+    font-size: 11px;
+}
+
+.icon {
+    width: 10px;
+    height: 10px;
+
+    @include mq(tablet) {
+        width: 12px;
+        height: 12px;
+    }
+}
