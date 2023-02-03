@@ -1,0 +1,9 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin-top: 30px;
+}
