@@ -1,0 +1,104 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.wrapper {
+    position: relative;
+
+
+    height: 240px;
+    width: 305px;
+    margin-bottom: 60px;
+    padding: 10px 0;
+
+    overflow-y: scroll;
+    overflow-x: clip;
+
+
+    @include mq(tablet) {
+        width: 552px;
+        height: 240px;
+        margin-bottom: 0;
+    }
+
+    /* Scrollbar Styling */
+    &::-webkit-scrollbar {
+        display: block;
+        width: 6px;
+        height: 40px;
+    }
+
+    &::-webkit-scrollbar-track {
+        height: 40px;
+        background-color: $color-mobile-bg;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+        height: 40px;
+        background: $color-modal-calories;
+    }
+}
+
+.list {
+    position: relative;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    scroll-behavior: smooth;
+
+    margin-right: 7px;
+
+
+    @include mq(mobile-only) {
+        width: 99%;
+    }
+
+    @include mq(tablet-only) {
+        margin-right: 31px;
+    }
+
+    @include mq(desktop) {
+        margin-right: 42px;
+    }
+
+}
+
+@media screen and (min-width: 350px) and (max-width: 767px) {
+    .wrapper {
+        width: 330px;
+    }
+
+    .list {
+        margin-right: 15px;
+
+    }
+
+    .shadow {
+        width: 320px;
+    }
+}
+
+.shadow {
+    position: absolute;
+
+    width: 520px;
+    height: 35px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 42.19%);
+
+    @include mq(mobile-only) {
+        width: 300px;
+        bottom: 180px;
+    }
+
+    @include mq(tablet-only) {
+        bottom: 26px;
+    }
+
+    @include mq(desktop) {
+        bottom: 15px;
+    }
+}
