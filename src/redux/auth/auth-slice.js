@@ -8,6 +8,7 @@ import {
 } from "../auth/auth-operations";
 
 import { pending, rejected } from "../../shared/services/utils/utils";
+import { healthyData, user } from "./auth-selectors";
 
 const initialState = {
   user: {},
@@ -62,37 +63,20 @@ const authSlice = createSlice({
       .addCase(getCurrentRequest.fulfilled, fulfilled)
 
       .addCase(authUserHealthyData.pending, pending)
-      .addCase(authUserHealthyData.fulfilled, fulfilled)
+      .addCase(authUserHealthyData.fulfilled, (store, { payload }) => ({
+        ...store,
+        loading: false,
+        error: false,
+        user: {
+          ...store.user,
+          healthyData: {
+            ...store.user.healthyData,
+            ...payload.healthyData,
+          },
+        },
+      }))
 
       .addMatcher(isRejectedAction, rejected);
   },
 });
 export default authSlice.reducer;
-
-/*
-
-extraReducers: {
-    [signupRequest.pending]: pending,
-    [signupRequest.rejected]: rejected,
-    [signupRequest.fulfilled]: fulfilled,
-
-    [signinRequest.pending]: pending,
-    [signinRequest.rejected]: rejected,
-    [signinRequest.fulfilled]: fulfilled,
-
-    [logoutRequest.pending]: pending,
-    [logoutRequest.rejected]: rejected,
-    [logoutRequest.fulfilled]: () => ({ ...initialState }),
-
-    [getCurrentRequest.pending]: pending,
-    [getCurrentRequest.rejected]: rejected,
-    [getCurrentRequest.fulfilled]: (store, { payload }) => ({
-      ...store,
-      loading: false,
-      error: null,
-      user: { ...payload },
-      isLogin: true,
-    }),
-  },
-
-  */
