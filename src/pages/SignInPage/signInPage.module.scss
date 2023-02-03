@@ -1,0 +1,13 @@
+@import '../../sass/utils/mixins';
+@import '../../sass/utils/vars';
+
+.title {
+    @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 13px, $ls: 0.04em);
+    color: $color-focus;
+    text-transform: uppercase;
+    text-align: center;
+
+    @include mq(tablet) {
+        text-align: left;
+    }
+}
