@@ -1,6 +1,4 @@
-import { useSelector } from "react-redux";
-
-import { healthyData } from '../../redux/auth/auth-selectors';
+import useAuthState from "../../shared/hooks/useAuthState";
 
 import RightSideListSummary from "./RightSideListSummary";
 import NotRecommendedProductList from "../../shared/components/NotRecommendedProductList";
@@ -10,13 +8,16 @@ import s from "./rightSideBar.module.scss";
 function RightSideBar() {
    //! lang
   const lang = 'en';
-  const { notAllowedProducts } = useSelector(healthyData);
+  //! 
 
+  const { user } = useAuthState();
+  const { healthyData } = user;
+  const { notAllowedProducts } = healthyData;
 
   return (
     <div className={s.wrapper}>
       <RightSideListSummary />
-     <NotRecommendedProductList className={s.notRecommend} list={notAllowedProducts?.default?.[lang] || notAllowedProducts[lang]} />
+     <NotRecommendedProductList className={s.notRecommend} list={notAllowedProducts[lang]} />
     </div>
   );
 }
