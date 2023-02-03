@@ -1,0 +1,131 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.585);
+    padding: 10px;
+    border-radius: 10px;
+
+    width: 240px;
+
+    @include mq(tablet) {
+        position: relative;
+
+        width: inherit;
+        height: 470px;
+
+
+        flex-wrap: wrap;
+        gap: 31px;
+        margin-top: 60px;
+        margin-bottom: 73px;
+    }
+
+    @include mq(desktop) {
+        width: 850px;
+        padding: 20px;
+        padding-bottom: 40px;
+
+        display: flex;
+        align-items: flex-start;
+    }
+
+}
+
+
+
+.label,
+.bloodType,
+.activity,
+.gender {
+    color: $color-text;
+    @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 17px, $ls: 0.04em);
+}
+
+.activity {
+    margin-bottom: 8.5px;
+}
+
+.wrapper {
+    width: 240px;
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 8.5px;
+}
+
+.wrapper__bloodtype,
+.wrapper__gender,
+.wrapper__activity {
+
+    width: inherit;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding-left: 3px;
+
+    @include mq(desktop) {
+        width: 240px;
+    }
+}
+
+.wrapper_activity {
+    margin-bottom: 40px;
+
+    @include mq(tablet) {
+        margin-bottom: 0px;
+    }
+
+    &--fields {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+
+        @include mq(tablet) {
+            width: 240px;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+
+        @include mq(desktop) {
+            gap: 10px;
+        }
+    }
+}
+
+.wrapper__btn {
+    margin-top: 40px;
+
+    @include mq(tablet) {
+        position: absolute;
+        bottom: 15px;
+        left: 2%
+    }
+
+}
+
+.button {
+    display: block;
+    padding: 13px 48px;
+
+    width: auto;
+    min-height: 44px;
+    background-color: $color-focus;
+
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 30px;
+    border: 1px solid $color-focus;
+
+    @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 17px, $ls: 0.04em);
+    text-align: center;
+
+    color: white;
+
+}
