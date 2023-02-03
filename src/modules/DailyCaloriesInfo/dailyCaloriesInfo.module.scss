@@ -1,0 +1,53 @@
+@import '../../sass/utils/mixins';
+@import '../../sass/utils/vars';
+
+.title {
+    max-width: 510px;
+    text-align: center;
+}
+
+.wrapper-kcal {
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 30px;
+
+    @include mq(tablet) {
+        border-bottom: transparent;
+    }
+}
+
+.calories {
+    margin-top: 40px;
+    text-align: center;
+
+
+    @include fonts($fs: normal, $fw: 700, $fsz: 48px, $lh: 58px, $ls: 0.04em);
+    color: $color-modal-calories;
+
+    @include mq(tablet) {
+        &::after {
+            content: '';
+            display: block;
+            width: 330px;
+            height: 1px;
+            margin: 0 auto;
+            margin-top: 30px;
+            background-color: #E0E0E0;
+        }
+    }
+}
+
+.kcal {
+    @include fonts($fs: normal, $fw: 700, $fsz: 20px, $lh: 38px, $ls: 0.04em);
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 40px;
+}
+
+.notRecommend {
+    margin: 0 auto;
+    max-width: 330px;
+}
