@@ -32,32 +32,34 @@ function Calculator() {
   const dispatch = useDispatch();
 
   async function onSubmit(data) {
-    setLoading(true);
-    setError(false);
-    try {
-      if (!isLogin) {
-      const { dailyRate, notAllowedProducts } = await postDailyRate(data);
-      setState({
-        dailyRate,
-        notAllowedProducts: notAllowedProducts[lang],
-        modal: true,
-      });
+    if (!isLogin) {
+      setLoading(true);
+      setError(false);
+      try {
+        const { dailyRate, notAllowedProducts } = await postDailyRate(data);
+        setState({
+          dailyRate,
+          notAllowedProducts: notAllowedProducts[lang],
+          modal: true,
+        });
       }
-      else {
-        //! delete
-  console.log('id', user.id);
-        dispatch(authUserHealthyData(user.id, data));
+      catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+     else {
+        dispatch(authUserHealthyData({
+        obj:data,
+        userID: user.id,
+      }));
         setState({
         dailyRate: user.healthyData.dailyRate,
         notAllowedProducts: user.healthyData.notAllowedProducts[lang],
         modal: true,
         })
       }
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
   }
 
   function closeModal() {
