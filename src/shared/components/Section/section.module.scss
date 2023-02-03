@@ -1,0 +1,63 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.section {
+    padding: 0px;
+
+    @include mq(mobile-only) {
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+
+    @include mq(tablet) {
+        padding: 90px;
+        padding-top: 190px;
+        padding-bottom: 398px;
+
+    }
+
+    @include mq(desktop) {
+        padding-top: 100px;
+        padding-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 767.99px) {
+    .mobile-section-auth {
+        padding-top: 110px;
+        padding-bottom: 60px;
+    }
+}
+
+.section-auth {
+
+
+    @include mq(desktop) {
+        padding: 0 25px;
+        padding-top: 145px;
+        padding-bottom: 111px;
+    }
+
+}
+
+.right-side-bar-section {
+    padding-top: 40px;
+    background-color: $bg-color;
+
+    @include mq(tablet-only) {
+        padding: 91px 87px;
+        background-image: url('../../../assets/images/Background/Background-Auth/Tablet/leaves.png');
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: auto;
+    }
+
+    @include mq(desktop) {
+
+        padding: 0 90px;
+        padding-top: 145px;
+        padding-bottom: 160px;
+
+        background-color: transparent;
+    }
+}
