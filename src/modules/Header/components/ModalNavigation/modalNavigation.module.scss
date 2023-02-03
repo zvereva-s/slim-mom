@@ -1,0 +1,43 @@
+@import '../../../../sass/utils/vars';
+
+.overlay {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 100vh;
+
+    overflow: hidden;
+
+    background-color: white;
+}
+
+.modal {
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: $color-modal-calories;
+}
+
+.wrapper-logo-nav {
+    padding: 18px 15px;
+    padding-top: 25px;
+
+    display: flex;
+
+}
+
+.btn-wrapper {
+    position: absolute;
+    top: 35px;
+    right: 21px;
+
+    width: 24px;
+    height: 24px;
+}
