@@ -31,10 +31,7 @@ function App() {
   const { isLogin, user } = useAuthState();
 
   useEffect(() => {
-    if (
-      (isLogin && user?.healthyData?.dailyRate?.default === "0") ||
-      user?.healthyData?.dailyRate === "0"
-    ) {
+    if (isLogin && user?.healthyData?.dailyRate === "0") {
       setNotifyToast(true);
     }
     if (userGoogleAuth.token) {
