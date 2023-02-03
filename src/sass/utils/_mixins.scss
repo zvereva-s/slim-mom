@@ -1,0 +1,91 @@
+@import "./decimals";
+
+// Calculating line-height value to multiplier
+
+@function setLineHeight($lh, $fsz) {
+    $lh-value: $lh / $fsz;
+
+    @return decimal-round($lh-value, 3);
+}
+
+
+
+//Настройки шрифта//
+@mixin fonts($fs: normal, $fw: 400, $fsz: 14px, $lh: 24px, $ls: 0.03em) {
+    font-style: $fs;
+    font-weight: $fw;
+    font-size: $fsz;
+    line-height: setLineHeight($lh, $fsz);
+    letter-spacing: $ls;
+}
+
+@function line-height($lh, $fsz) {
+    $line-height: ($lh / $fsz * 100) / 100;
+    ;
+
+    @return $line-height;
+}
+
+
+//Флексы//
+@mixin flex($ds: flex, $ai: center, $jc: center) {
+    display: $ds;
+    align-items: $ai;
+    justify-content: $jc;
+}
+
+
+/* MEDIA QUERIES*/
+@mixin mq($range) {
+    $mobile: 480px;
+    $tablet: 768px;
+    $desktop: 1200px;
+
+    @if $range==mobile-only {
+        @media screen and (max-width: #{$tablet - 0.02}) {
+            @content;
+        }
+    }
+
+    @else if $range==mobile {
+        @media (min-width: $mobile) {
+            @content;
+        }
+    }
+
+    @else if $range==tablet-only {
+        @media screen and (min-width: $tablet) and (max-width: #{$desktop - 0.02}) {
+            @content;
+        }
+    }
+
+    @else if $range==tablet {
+        @media screen and (min-width: $tablet) {
+            @content;
+        }
+    }
+
+    @else if $range==desktop {
+        @media screen and (min-width: $desktop) {
+            @content;
+        }
+    }
+
+    @else if $range==notDesktop {
+        @media screen and (max-width: #{$desktop - 0.02}) {
+            @content;
+        }
+    }
+
+    @else if $range==retina {
+
+        @media screen and (min-device-pixel-ratio: 2),
+        screen and (-moz-min-device-pixel-ratio: 2),
+        screen and (-o-min-device-pixel-ratio: 2/1),
+        screen and (-webkit-min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+            @content;
+        }
+    }
+}
