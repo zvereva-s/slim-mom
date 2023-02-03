@@ -4,7 +4,7 @@ function NotRecommendedProductList({ className, list }) {
   let contentList = [];
   let counter = 0;
 
-  while (counter < 6) {
+  while (counter < 5) {
     contentList.push(list[Math.floor(Math.random() * 47)]);
     counter += 1;
   }
