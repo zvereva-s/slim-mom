@@ -1,0 +1,14 @@
+@import '../../sass/utils/mixins';
+@import '../../sass/utils/vars';
+
+.wrapper {
+    @include mq(tablet) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @include mq(desktop) {
+        display: flex;
+        flex-direction: column;
+    }
+}
