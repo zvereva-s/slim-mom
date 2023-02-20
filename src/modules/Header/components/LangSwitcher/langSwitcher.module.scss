@@ -1,29 +1,86 @@
 @import '../../../../sass/utils/mixins';
 @import '../../../../sass/utils/vars';
 
+
 .lang-box {
-    display: flex;
+    @include flex();
 
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 5px;
 
-    @include mq(tablet-only) {
-        top: 15px;
-        right: 20px;
+    right: 200px;
+
+    width: 105px;
+    height: 36px;
+    padding: 5px;
+
+
+    border-radius: 50px;
+    cursor: pointer;
+
+    &-light {
+        background-color: $color-switcher-thumb-background-light;
     }
 
-    @include mq(desktop) {
-        top: 30px;
-        right: 70px;
+    &-dark {
+        background-color: $color-switcher-thumb-background-dark;
+    }
+}
+
+.lang {
+    padding: 3px 5px;
+    border-radius: 50%;
+    background-color: white;
+
+    &:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    @include fonts();
+    font-size: 11px;
+
+    &:focus,
+    &:active,
+    &:hover {
+
+        font-weight: 700;
+        padding: 3px 4px;
+    }
+
+    &-light {
+
+        &:focus,
+        &:active,
+        &:hover {
+            background-color: $color-focus-light;
+            color: white;
+        }
+    }
+
+    &-dark {
+
+        &:focus,
+        &:active,
+        &:hover {
+            background-color: $color-switcher-background-dark;
+        }
     }
 
 }
 
-.lang {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: inherit;
+.en-en,
+.ua-ua,
+.ru-ru {
+    &-light {
+        background-color: $color-focus-light;
+        color: white;
+        font-weight: 700;
+        padding: 3px 4px;
+    }
 
-    @include fonts($fs: normal, $fw: 700, $fsz: 11px, $lh: 9px, $ls: 0.04);
+    &-dark {
+        background-color: $color-switcher-background-dark;
+        font-weight: 700;
+        padding: 3px 4px;
+    }
 }
