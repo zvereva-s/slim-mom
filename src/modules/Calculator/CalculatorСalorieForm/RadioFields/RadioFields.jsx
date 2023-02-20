@@ -1,7 +1,11 @@
+import useTranslate from "../../../../shared/hooks/useTranslate";
+
 import FormField from "../../../../shared/components/FormField";
 import { blood, gender, physicalActivity } from "../fields";
 
 function RadioFields({ handleChange, type, handleAdvice, advice }) {
+  const { lang } = useTranslate();
+
   let arr;
   switch (type) {
     case "blood":
@@ -16,11 +20,11 @@ function RadioFields({ handleChange, type, handleAdvice, advice }) {
     default:
       arr = [];
   }
-  const radioFields = arr.map((el) => (
+  const radioFields = arr.map((el, idx) => (
     <FormField
-      key={el.label}
+      key={idx + 1}
       handleChange={handleChange}
-      label={el.label}
+      label={el.label[lang] || el.label}
       type={el.type}
       name={el.name}
       value={el.value}
