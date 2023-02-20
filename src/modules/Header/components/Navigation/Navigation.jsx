@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 import useAuthState from "../../../../shared/hooks/useAuthState";
+import useTranslate from "../../../../shared/hooks/useTranslate";
 
 import s from "./navigation.module.scss";
 import { items } from "./items";
@@ -11,6 +12,7 @@ function getClassName({ isActive }) {
 }
 
 function Navigation({ isModalOpen, closeModal, children }) {
+  const { lang } = useTranslate();
   const { isLogin } = useAuthState();
 
   const styleNav = isLogin ? s["nav-isLogin"] : s.nav;
@@ -21,7 +23,7 @@ function Navigation({ isModalOpen, closeModal, children }) {
   const elements = menu.map(({ id, link, title }) => (
     <li key={id} className={s.item}>
       <NavLink className={getClassName} to={link} onClick={closeModal}>
-        {title}
+        {title[lang]}
       </NavLink>
     </li>
   ));
