@@ -1,8 +1,12 @@
+import { en } from "../../../assets/languages/en";
+import { ua } from "../../../assets/languages/ua";
+import { ru } from "../../../assets/languages/ru";
+
 export const fields = [
   {
-    label: "Height *",
+    label: { en: en.height, ua: ua.height, ru: ru.height },
     name: "height",
-    placeholder: "Height *",
+    placeholder: { en: en.height, ua: ua.height, ru: ru.height },
     type: "number",
     minLength: "3",
     maxLength: "3",
@@ -11,9 +15,9 @@ export const fields = [
     required: true,
   },
   {
-    label: "Age *",
+    label: { en: en.age, ua: ua.age, ru: ru.age },
     name: "age",
-    placeholder: "Age *",
+    placeholder: { en: en.age, ua: ua.age, ru: ru.age },
     type: "number",
     minLength: "2",
     maxLength: "2",
@@ -22,9 +26,9 @@ export const fields = [
     required: true,
   },
   {
-    label: "Weight *",
+    label: { en: en.weight, ua: ua.weight, ru: ru.weight },
     name: "weight",
-    placeholder: "Weight *",
+    placeholder: { en: en.weight, ua: ua.weight, ru: ru.weight },
     type: "number",
     minLength: "2",
     maxLength: "3",
@@ -32,9 +36,13 @@ export const fields = [
     required: true,
   },
   {
-    label: "Desired Weight *",
+    label: { en: en.desiredWeight, ua: ua.desiredWeight, ru: ru.desiredWeight },
     name: "desiredWeight",
-    placeholder: "Desired Weight *",
+    placeholder: {
+      en: en.desiredWeight,
+      ua: ua.desiredWeight,
+      ru: ru.desiredWeight,
+    },
     type: "number",
     minLength: "2",
     maxLength: "3",
@@ -72,13 +80,13 @@ export const blood = [
 
 export const gender = [
   {
-    label: "male",
+    label: { en: en.male, ua: ua.male, ru: ru.male },
     name: "gender",
     type: "radio",
     value: "male",
   },
   {
-    label: "female",
+    label: { en: en.female, ua: ua.female, ru: ru.female },
     name: "gender",
     type: "radio",
     value: "female",
@@ -87,56 +95,33 @@ export const gender = [
 
 export const physicalActivity = [
   {
-    label: "minimal",
+    label: { en: en.minimal, ua: ua.minimal, ru: ru.minimal },
     name: "physicalActivity",
     type: "radio",
     value: "1.2",
   },
   {
-    label: "low",
+    label: { en: en.low, ua: ua.low, ru: ru.low },
     name: "physicalActivity",
     type: "radio",
     value: "1.375",
   },
   {
-    label: "medium",
+    label: { en: en.medium, ua: ua.medium, ru: ru.medium },
     name: "physicalActivity",
     type: "radio",
     value: "1.55",
   },
   {
-    label: "high",
+    label: { en: en.high, ua: ua.high, ru: ru.high },
     name: "physicalActivity",
     type: "radio",
     value: "1.7",
   },
   {
-    label: "extreme",
+    label: { en: en.extreme, ua: ua.extreme, ru: ru.extreme },
     name: "physicalActivity",
     type: "radio",
     value: "1.9",
   },
 ];
-
-/* bloodType: {
-    one: {
-      label: "1",
-      name: "one",
-      type: "radio",
-    },
-    two: {
-      label: "2",
-      name: "two",
-      type: "radio",
-    },
-    three: {
-      label: "3",
-      name: "three",
-      type: "radio",
-    },
-    four: {
-      label: "4",
-      name: "four",
-      type: "radio",
-    },
-  },*/
