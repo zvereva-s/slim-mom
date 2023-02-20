@@ -5,6 +5,7 @@ import classNames from "classnames";
 import Navigation from "../components/Navigation";
 import ModalNavigation from "../components/ModalNavigation";
 import LangSwitcher from "../components/LangSwitcher";
+import ThemeSwitcher from "../../../shared/components/ThemeSwitcher/ThemeSwitcher";
 import UserInfo from "../components/UserInfo/UserInfo";
 
 import Logo from "../../../shared/components/Logo";
@@ -16,15 +17,9 @@ function AuthHeader() {
   const [openModal, setOpenModal] = useState(false);
 
   function showModal() {
-    //
-    console.log("open", openModal);
-    //
     setOpenModal(true);
   }
   function closeModal() {
-    //
-    console.log("close", openModal);
-    //
     setOpenModal(false);
   }
   const burger = (
@@ -42,6 +37,7 @@ function AuthHeader() {
     <>
       <header className={s.header}>
         <LangSwitcher />
+        <ThemeSwitcher />
         <div className={s.container}>
           <div className={s["wrapper-logo-nav"]}>
             <Link to="/">
