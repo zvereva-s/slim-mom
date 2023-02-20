@@ -1,0 +1,105 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.icon-moon,
+.icon-sun {
+    height: 26px;
+    width: 26px;
+
+}
+
+//? LIGHT THEME
+.wrapper {
+    position: absolute;
+
+    top: 5px;
+    right: 100px;
+
+
+    width: 80px;
+    padding: 5px 5px;
+
+    border-radius: 50px;
+
+
+    gap: 1.33rem;
+    cursor: pointer;
+
+    @include flex();
+
+    &-light {
+        background-color: $color-switcher-thumb-background-light;
+    }
+
+    &-dark {
+        background-color: $color-switcher-thumb-background-dark;
+    }
+}
+
+.wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid rgb(197, 255, 135);
+    border-radius: 50%;
+    z-index: 0;
+
+    transform: translateX(0);
+    transition: background-color $timeDelay $cubic;
+
+
+    -webkit-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+    -moz-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+    box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+
+
+}
+
+//? DARK WRAPPER
+.wrapper {
+    position: absolute;
+
+    top: 5px;
+    right: 100px;
+
+    width: 80px;
+    padding: 5px 5px;
+
+    border-radius: 50px;
+    background-color: rgb(110, 110, 110);
+
+    gap: 1.33rem;
+    cursor: pointer;
+
+    @include flex();
+}
+
+.wrapper::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(145, 145, 233);
+    border: 1px solid rgb(110, 110, 110);
+    border-radius: 50%;
+    z-index: 0;
+
+    transform: translateX(0);
+    transition: background-color $timeDelay $cubic;
+
+
+    -webkit-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+    -moz-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+    box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+}
+
+
+//? LIGHT & DARK
+
+.wrapper .icon {
+    z-index: 1;
+}
