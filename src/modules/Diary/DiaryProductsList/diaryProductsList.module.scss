@@ -29,13 +29,13 @@
 
     &::-webkit-scrollbar-track {
         height: 40px;
-        background-color: $color-mobile-bg;
+        background-color: $color-mobile-bg-light;
 
     }
 
     &::-webkit-scrollbar-thumb {
         height: 40px;
-        background: $color-modal-calories;
+        background: $color-modal-calories-light;
     }
 }
 
