@@ -5,8 +5,10 @@ import plus from "../../../assets/images/Button/Plus.svg";
 import close from "../../../assets/images/Button/CloseButton.svg";
 import arrowBack from "../../../assets/images/Button/ArrowMenu.svg";
 import burger from "../../../assets/images/Button/Burger.svg";
-import fb from '../../../assets/images/Button/Fb.svg';
-import google from '../../../assets/images/Button/Google.svg';
+import fb from "../../../assets/images/Button/Fb.svg";
+import google from "../../../assets/images/Button/Google.svg";
+import sun from "../../../assets/images/Button/Sun.svg";
+import moon from "../../../assets/images/Button/Moon.svg";
 
 import s from "./button.module.scss";
 
@@ -33,6 +35,12 @@ function Button({ type, text, className, disabled, icon, onClick }) {
       break;
     case "google":
       svg = google;
+      break;
+    case "sun":
+      svg = sun;
+      break;
+    case "moon":
+      svg = moon;
       break;
     default:
       svg = "";
