@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
 
-    background-color: rgba(255, 255, 255, 0.585);
+    background-color: $color-background-form-light;
     padding: 10px;
     border-radius: 10px;
 
@@ -44,7 +44,7 @@
 .bloodType,
 .activity,
 .gender {
-    color: $color-text;
+    color: $color-text-light;
     @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 17px, $ls: 0.04em);
 }
 
@@ -117,11 +117,11 @@
 
     width: auto;
     min-height: 44px;
-    background-color: $color-focus;
+    background-color: $color-focus-light;
 
-    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    box-shadow: 0px 4px 10px $color-box-shadow-orange-light;
     border-radius: 30px;
-    border: 1px solid $color-focus;
+    border: 1px solid $color-focus-light;
 
     @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 17px, $ls: 0.04em);
     text-align: center;
