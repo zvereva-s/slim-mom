@@ -4,12 +4,15 @@ import classNames from "classnames";
 import { useMemo, useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 
-import Link from '../Link';
+import useTranslate from "../../hooks/useTranslate";
+
+import Link from "../Link";
 
 import s from "./formField.module.scss";
 
 function FormField(props) {
-  const {className,
+  const {
+    className,
     label,
     name,
     value,
@@ -27,11 +30,15 @@ function FormField(props) {
     min,
     max,
     error,
-    link } = props;
-  
+    link,
+    children,
+  } = props;
+
+  const { t } = useTranslate();
+
   const [showLink, setShowLink] = useState(false);
   const [typeInput, setTypeInput] = useState(type);
-  
+
   const id = useMemo(() => nanoid(), []);
 
   const isRadio = type === "radio" ? true : false;
@@ -41,12 +48,12 @@ function FormField(props) {
   const inputStyle = isRadio
     ? s["input-radio"]
     : classNames(s["input-text"], s.input, `${s} ${className}`);
- 
+
   const handleLink = () => {
-    setShowLink(!showLink)
-          setTypeInput(showLink ? 'password' : 'text')
-  }
-  
+    setShowLink(!showLink);
+    setTypeInput(showLink ? "password" : "text");
+  };
+
   const textField = (
     <>
       <div className={s.wrapper}>
@@ -63,7 +70,7 @@ function FormField(props) {
           onChange={handleChange}
           onBlur={handleBlur}
           placeholder={placeholder}
-          type={type === 'password' ? typeInput : type}
+          type={type === "password" ? typeInput : type}
           required={required}
           pattern={pattern}
           title={title}
@@ -71,7 +78,11 @@ function FormField(props) {
           min={min}
           max={max}
         />
-        {link && <div className={s['link-wrapper']} onClick={handleLink}><Link text={!showLink ? 'Show' : 'Close'} /></div>}
+        {link && (
+          <div className={s["link-wrapper"]} onClick={handleLink}>
+            <Link text={!showLink ? t.show : t.close} />
+          </div>
+        )}
         {error?.message && error.type === type && (
           <p className={s[`invalid__message--wrapper`]}>{error?.message}</p>
         )}
