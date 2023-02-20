@@ -181,3 +181,18 @@ export const validateField = (type, value, name) => {
   }
   return res;
 };
+
+export const converToDate = (dateValue) => {
+  const year = dateValue.getFullYear();
+  const month =
+    String(dateValue.getMonth() + 1).length === 1
+      ? 0 + String(dateValue.getMonth() + 1)
+      : String(dateValue.getMonth() + 1);
+
+  const day =
+    String(dateValue.getDate()).length === 1
+      ? 0 + String(dateValue.getDate())
+      : String(dateValue.getDate());
+
+  return { year, month, day };
+};
