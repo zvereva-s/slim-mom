@@ -18,7 +18,7 @@
 
         justify-content: flex-end;
 
-        background-color: $color-mobile-bg;
+        background-color: $color-mobile-bg-light;
         padding: 15px;
         padding-bottom: 13px;
     }
@@ -39,7 +39,7 @@
         $fsz: 14px,
         $lh: 13px,
         $ls: 0.04em);
-    color: $color-text;
+    color: $color-text-light;
 
     &:first-child {
         color: black;
@@ -52,7 +52,7 @@
             width: 2px;
             height: 32px;
             left: 240px;
-            background-color: $color-line;
+            background-color: $color-line-light;
         }
     }
 }
