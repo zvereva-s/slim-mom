@@ -7,15 +7,10 @@ import {
   logout,
   getCurrent,
 } from "../../shared/services/apis/auth";
-import { patchDailyRateByUserId } from "../../shared/services/apis/daily-rate";
 
 export const signupRequest = createOperation("auth/signup", signup);
 export const signinRequest = createOperation("auth/signin", signin);
 export const logoutRequest = createOperation("auth/logout", logout);
-export const authUserHealthyData = createOperation(
-  "auth/userHealthyData",
-  patchDailyRateByUserId
-);
 
 export const getCurrentRequest = createAsyncThunk(
   "auth/current",
