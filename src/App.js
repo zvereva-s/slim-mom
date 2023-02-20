@@ -5,6 +5,8 @@ import { useSearchParams } from "react-router-dom";
 import useAuthState from "./shared/hooks/useAuthState";
 import useCloseModal from "./shared/hooks/useCloseModal";
 
+import { healthyDataObj } from "./redux/healthyData/healthyData-selectors";
+
 import { getCurrentRequest } from "./redux/auth/auth-operations";
 import { addGoogleAuth } from "./redux/auth/auth-actions";
 
@@ -28,17 +30,19 @@ function App() {
   });
 
   const dispatch = useDispatch();
-  const { isLogin, user } = useAuthState();
+  const { isLogin } = useAuthState();
+
+  const { healthyData } = useSelector(healthyDataObj);
 
   useEffect(() => {
-    if (isLogin && user?.healthyData?.dailyRate === "0") {
+    if (isLogin && healthyData?.dailyRate === "0") {
       setNotifyToast(true);
     }
     if (userGoogleAuth.token) {
       dispatch(addGoogleAuth(userGoogleAuth));
     }
     dispatch(getCurrentRequest());
-  }, [dispatch, user?.healthyData?.dailyRate]);
+  }, [dispatch, healthyData?.dailyRate]);
 
   return (
     <>
