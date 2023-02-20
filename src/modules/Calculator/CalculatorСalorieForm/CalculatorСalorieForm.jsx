@@ -1,4 +1,5 @@
 import useForm from "../../../shared/hooks/useForm";
+import useTranslate from "../../../shared/hooks/useTranslate";
 
 import classNames from "classnames";
 
@@ -12,6 +13,7 @@ import { initialState } from "./initialState";
 import s from "./calculatorCalorieFrom.module.scss";
 
 function CalculatorСalorieForm({ onSubmit }) {
+  const { t } = useTranslate();
   const { state, handleChange, handleSubmit, handleAdvice, advice } = useForm({
     onSubmit,
     initialState,
@@ -22,19 +24,19 @@ function CalculatorСalorieForm({ onSubmit }) {
       <form className={s.form} onSubmit={handleSubmit}>
         <TextFields handleChange={handleChange} state={state} />
         <div className={s["wrapper__bloodtype"]}>
-          <label className={s.bloodType}>BloodType *</label>
+          <label className={s.bloodType}>{t.bloodType}</label>
           <div className={s.wrapper}>
             <RadioFields handleChange={handleChange} type="blood" />
           </div>
         </div>
         <div className={s["wrapper__gender"]}>
-          <label className={s.gender}>Gender *</label>
+          <label className={s.gender}>{t.gender}</label>
           <div className={s.wrapper}>
             <RadioFields handleChange={handleChange} type="gender" />
           </div>
         </div>
         <div className={s["wrapper__activity"]}>
-          <label className={s.activity}>Physical activity *</label>
+          <label className={s.activity}>{t.physicalActivity}</label>
           <div className={s["wrapper_activity--fields"]}>
             <RadioFields
               handleChange={handleChange}
@@ -48,7 +50,7 @@ function CalculatorСalorieForm({ onSubmit }) {
           <Button
             className={classNames("button", "text", "focus")}
             type="submit"
-            text="Start losing weight"
+            text={t.calculatorBtn}
           />
         </div>
       </form>
