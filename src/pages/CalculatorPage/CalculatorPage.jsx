@@ -1,3 +1,4 @@
+import useTranslate from "../../shared/hooks/useTranslate";
 import useAuthState from "../../shared/hooks/useAuthState";
 
 import Calculator from "../../modules/Calculator";
@@ -9,9 +10,9 @@ import Container from "../../shared/components/Container";
 import Title from "../../shared/components/Title";
 
 function CalculatorPage() {
-
+  const { t } = useTranslate();
   const { isLogin } = useAuthState();
-  const title = "Calculate your daily calorie intake right now";
+  const title = t.calculatorTitle;
 
   return (
     <Main>
