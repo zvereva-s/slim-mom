@@ -42,7 +42,7 @@
 
 .right-side-bar-section {
     padding-top: 40px;
-    background-color: $bg-color;
+    background-color: $bg-color-light;
 
     @include mq(tablet-only) {
         padding: 91px 87px;
