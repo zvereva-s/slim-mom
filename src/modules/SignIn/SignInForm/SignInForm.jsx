@@ -1,15 +1,18 @@
 import classNames from "classnames";
+
+import useTranslate from "../../../shared/hooks/useTranslate";
 import useForm from "../../../shared/hooks/useForm";
 
 import FormField from "../../../shared/components/FormField";
 import Button from "../../../shared/components/Button";
-import AuthSocial from '../../../shared/components/AuthSocial';
+import AuthSocial from "../../../shared/components/AuthSocial";
 
 import { initialState } from "./initialState";
 
 import s from "./signInForm.module.scss";
 
 function SignInForm({ onSubmit }) {
+  const { t } = useTranslate();
   const { state, setState, handleChange, handleSubmit, error, validate } =
     useForm({
       onSubmit,
@@ -21,7 +24,7 @@ function SignInForm({ onSubmit }) {
       <FormField
         name="email"
         value={state.email}
-        placeholder="Login *"
+        placeholder={t.login}
         type="email"
         handleChange={handleChange}
         handleBlur={validate}
@@ -31,7 +34,7 @@ function SignInForm({ onSubmit }) {
       <FormField
         name="password"
         value={state.password}
-        placeholder="Password *"
+        placeholder={t.password}
         type="password"
         minLength="6"
         handleChange={handleChange}
@@ -40,15 +43,15 @@ function SignInForm({ onSubmit }) {
         link={true}
         required
       />
-       <AuthSocial />
+      <AuthSocial />
       <div className={s[`wrapper-btn`]}>
         <Button
-          text="Sign In"
+          text={t.signInBtn}
           type="submit"
           className={classNames("button", "text", "focus")}
         />
         <Button
-          text="Sign Up"
+          text={t.signUpBtn}
           type="submit"
           className={classNames("button", "text", "base", "disabled")}
           disabled
