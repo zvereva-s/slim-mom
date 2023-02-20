@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useLayoutEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import useAuthState from "../../shared/hooks/useAuthState";
+import useTranslate from "../../shared/hooks/useTranslate";
 
-import { authUserHealthyData } from '../../redux/auth/auth-operations';
+import { healthyDataObj } from "../../redux/healthyData/healthyData-selectors";
+import { dailyRateUserRequest } from "../../redux/healthyData/healthyData-operations";
 
 import { postDailyRate } from "../../shared/services/apis/daily-rate";
 
@@ -12,30 +14,41 @@ import CalculatorСalorieForm from "./CalculatorСalorieForm/CalculatorСalorieF
 import DailyCaloriesInfo from "../DailyCaloriesInfo";
 
 function Calculator() {
-  //! lang
-  const lang = 'en';
-  //!
-  const [state, setState] = useState({
-    dailyRate: "",
-    notAllowedProducts: [],
-    modal: false,
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { lang } = useTranslate();
 
   const { isLogin, user } = useAuthState();
+  const { healthyData } = useSelector(healthyDataObj);
+  const { dailyRate, notAllowedProducts } = healthyData;
 
-  
+  const [state, setState] = useState({
+    dailyRate: isLogin ? dailyRate : "",
+    notAllowedProducts: isLogin ? notAllowedProducts[lang] : [],
+    modal: false,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useLayoutEffect(() => {
+    if (isLogin) {
+      setState({
+        ...state,
+        dailyRate,
+        notAllowedProducts: notAllowedProducts[lang],
+      });
+    }
+  }, [healthyData]);
+
   async function onSubmit(data) {
-    if (!isLogin) {
-      setLoading(true);
-      setError(false);
-      try {
+    setLoading(true);
+    setError(false);
+    try {
+      if (isLogin) {
+        dispatch(dailyRateUserRequest({ userID: user.id, obj: data }));
+        setState({ ...state, modal: true });
+      } else {
         const { dailyRate, notAllowedProducts } = await postDailyRate(data);
         setState({
           dailyRate,
@@ -43,23 +56,11 @@ function Calculator() {
           modal: true,
         });
       }
-      catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
     }
-     else {
-        dispatch(authUserHealthyData({
-        obj:data,
-        userID: user.id,
-      }));
-        setState({
-        dailyRate: user.healthyData.dailyRate,
-        notAllowedProducts: user.healthyData.notAllowedProducts[lang],
-        modal: true,
-        })
-      }
   }
 
   function closeModal() {
@@ -70,7 +71,6 @@ function Calculator() {
   function handleClick() {
     return isLogin ? navigate("/diary") : navigate("/signup");
   }
-
 
   return (
     <>
