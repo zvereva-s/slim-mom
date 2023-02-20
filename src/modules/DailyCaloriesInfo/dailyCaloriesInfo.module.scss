@@ -7,7 +7,7 @@
 }
 
 .wrapper-kcal {
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid $color-wrapper-kcal-light;
     padding-bottom: 30px;
 
     @include mq(tablet) {
@@ -21,7 +21,7 @@
 
 
     @include fonts($fs: normal, $fw: 700, $fsz: 48px, $lh: 58px, $ls: 0.04em);
-    color: $color-modal-calories;
+    color: $color-modal-calories-light;
 
     @include mq(tablet) {
         &::after {
@@ -31,7 +31,7 @@
             height: 1px;
             margin: 0 auto;
             margin-top: 30px;
-            background-color: #E0E0E0;
+            background-color: $color-wrapper-kcal-light;
         }
     }
 }
