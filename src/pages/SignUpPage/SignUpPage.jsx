@@ -1,3 +1,5 @@
+import useTranslate from "../../shared/hooks/useTranslate";
+
 import SignUp from "../../modules/SignUp";
 
 import Main from "../../shared/components/Main";
@@ -8,11 +10,12 @@ import Title from "../../shared/components/Title";
 import s from "./signUpPage.module.scss";
 
 function SignUpPage() {
+  const { t } = useTranslate();
   return (
     <Main>
       <Section>
         <Container>
-          <Title text="Sign Up" className={s.title} />
+          <Title text={t.signUpTitle} className={s.title} />
           <SignUp />
         </Container>
       </Section>
