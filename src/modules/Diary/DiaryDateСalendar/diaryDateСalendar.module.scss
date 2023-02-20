@@ -15,7 +15,7 @@
 
 .title {
     @include fonts($fs: normal, $fw: 700, $fsz: 18px, $lh: 26px, $ls: 0.04em);
-    color: $color-dark;
+    color: $color-dark-light;
 
     // @include mq(mobile-only) {
     //     width: 295px;
