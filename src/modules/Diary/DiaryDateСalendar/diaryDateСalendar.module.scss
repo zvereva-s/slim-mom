@@ -15,7 +15,6 @@
 
 .title {
     @include fonts($fs: normal, $fw: 700, $fsz: 18px, $lh: 26px, $ls: 0.04em);
-    color: $color-dark-light;
 
     // @include mq(mobile-only) {
     //     width: 295px;
@@ -25,6 +24,14 @@
         // width: 605px;
         @include fonts($fs: normal, $fw: 700, $fsz: 30px, $lh: 36px, $ls: 0.04em);
 
+    }
+
+    &-light {
+        color: $color-dark-light;
+    }
+
+    &-dark {
+        color: $color-dark-dark;
     }
 }
 
