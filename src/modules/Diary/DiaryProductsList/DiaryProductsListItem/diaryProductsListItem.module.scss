@@ -18,10 +18,7 @@
 
 .text {
     padding-bottom: 10px;
-    border-bottom: 1px solid $color-wrapper-kcal-light;
     @include fonts();
-    color: $color-dark;
-
 
     &:not(:last-child) {
         margin-right: 10px;
@@ -29,6 +26,16 @@
         @include mq(tablet) {
             margin-right: 31px;
         }
+    }
+
+    &-light {
+        border-bottom: 1px solid $color-wrapper-kcal-light;
+        color: $color-dark-light;
+    }
+
+    &-dark {
+        border-bottom: 1px solid $color-wrapper-kcal-dark;
+        color: $color-dark-dark;
     }
 }
 
