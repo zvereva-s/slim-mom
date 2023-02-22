@@ -12,7 +12,13 @@
 
     overflow: hidden;
 
-    background-color: white;
+    &-light {
+        background-color: white;
+    }
+
+    &-dark {
+        background-color: white;
+    }
 }
 
 .modal {
@@ -22,7 +28,13 @@
     left: 0;
     right: 0;
 
-    background-color: $color-modal-calories-light;
+    &-light {
+        background-color: $color-modal-calories-light;
+    }
+
+    &-dark {
+        background-color: $color-modal-calories-dark;
+    }
 }
 
 .wrapper-logo-nav {
