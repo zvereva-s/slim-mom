@@ -2,8 +2,7 @@
 @import '../../../sass/utils/vars';
 
 .wrapper {
-    display: flex;
-    align-items: center;
+    @include flex();
     width: 60%;
     margin-top: 30px;
 }
