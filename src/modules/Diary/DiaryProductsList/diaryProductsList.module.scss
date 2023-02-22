@@ -29,13 +29,30 @@
 
     &::-webkit-scrollbar-track {
         height: 40px;
-        background-color: $color-mobile-bg-light;
-
     }
 
     &::-webkit-scrollbar-thumb {
         height: 40px;
-        background: $color-modal-calories-light;
+    }
+
+    &-light {
+        &::-webkit-scrollbar-track {
+            background-color: $color-mobile-bg-light;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $color-modal-calories-light;
+        }
+    }
+
+    &-dark {
+        &::-webkit-scrollbar-track {
+            background-color: $color-mobile-bg-dark;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $color-modal-calories-dark;
+        }
     }
 }
 
@@ -87,7 +104,15 @@
     width: 520px;
     height: 35px;
 
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 42.19%);
+
+
+    &-light {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 42.19%);
+    }
+
+    &-dark {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, #FFFFFF 42.19%);
+    }
 
     @include mq(mobile-only) {
         width: 300px;
