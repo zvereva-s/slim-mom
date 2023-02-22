@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+
+import useTheme from "../../../../shared/hooks/useTheme";
 import useCloseModal from "../../../../shared/hooks/useCloseModal.js";
 
 import Navigation from "../Navigation/Navigation.jsx";
@@ -13,11 +15,15 @@ import Button from "../../../../shared/components/Button";
 import s from "./modalNavigation.module.scss";
 
 function ModalNavigation({ closeModal, isModalOpen }) {
+  const { theme } = useTheme();
   const { handleClose } = useCloseModal(closeModal);
 
   return (
     <Modal>
-      <div className={s.overlay} onClick={handleClose}>
+      <div
+        className={classNames(s.overlay, s[`overlay-${theme}`])}
+        onClick={handleClose}
+      >
         <div className={s["wrapper-logo-nav"]}>
           <Link to="/">
             <Logo isModalOpen={isModalOpen} />
@@ -32,7 +38,7 @@ function ModalNavigation({ closeModal, isModalOpen }) {
             />
           </div>
         </div>
-        <div className={s.modal}>
+        <div className={classNames(s.modal, s[`modal-${theme}`])}>
           <Container>
             <Navigation isModalOpen={isModalOpen} closeModal={closeModal} />
           </Container>
