@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { useMediaPredicate } from "react-media-hook";
 import classNames from "classnames";
 
+import useTheme from "../../shared/hooks/useTheme";
 import useBreakpoints from "../../shared/hooks/useBreakpoints";
 import useTranslate from "../../shared/hooks/useTranslate";
 
@@ -28,6 +29,7 @@ import s from "./diary.module.scss";
 
 function Diary() {
   const { lang, t } = useTranslate();
+  const { theme } = useTheme();
 
   const [foodListForChoose, setFoodListForChoose] = useState([]);
 
@@ -91,11 +93,18 @@ function Diary() {
   const markupLessThan768 = (
     <>
       {products.length > 0 && <DiaryProductList list={products} />}
-      <div className={s["wrapper-btn"]}>
+      <div className={classNames(s["wrapper-btn"], s[`wrapper-btn-${theme}`])}>
         <Button
           type="button"
           icon="plus"
-          className={classNames("plus", "focus", "button")}
+          className={classNames(
+            "plus",
+            "focus",
+            "button",
+            `button-${theme}`,
+            `plus-${theme}`,
+            `focus-${theme}`
+          )}
           onClick={showModal}
         />
         {openModal && <DiaryAddProductFormMobile closeModal={closeModal} />}
