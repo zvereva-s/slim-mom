@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
+import useTheme from "../../../shared/hooks/useTheme";
+
 import Navigation from "../components/Navigation";
 import ModalNavigation from "../components/ModalNavigation";
-import LangSwitcher from "../components/LangSwitcher";
-import ThemeSwitcher from "../../../shared/components/ThemeSwitcher/ThemeSwitcher";
+import AdditionalMenu from "../components/AdditionalMenu/AdditionalMenu";
 import UserInfo from "../components/UserInfo/UserInfo";
 
 import Logo from "../../../shared/components/Logo";
@@ -14,6 +15,7 @@ import Button from "../../../shared/components/Button";
 import s from "./authHeader.module.scss";
 
 function AuthHeader() {
+  const { theme } = useTheme();
   const [openModal, setOpenModal] = useState(false);
 
   function showModal() {
@@ -23,11 +25,17 @@ function AuthHeader() {
     setOpenModal(false);
   }
   const burger = (
-    <div className={s["burger-icon-wrapper"]} onClick={showModal}>
+    <div
+      className={classNames(
+        s["burger-icon-wrapper"],
+        s[`burger-icon-wrapper-${theme}`]
+      )}
+      onClick={showModal}
+    >
       <Button
         type="button"
         icon="burger"
-        className={classNames("button")}
+        className={classNames("button", `button-${theme}`)}
         onClick={showModal}
       />
     </div>
@@ -35,11 +43,15 @@ function AuthHeader() {
 
   return (
     <>
-      <header className={s.header}>
-        <LangSwitcher />
-        <ThemeSwitcher />
-        <div className={s.container}>
-          <div className={s["wrapper-logo-nav"]}>
+      <header className={classNames(s.header, s[`header-${theme}`])}>
+        <AdditionalMenu />
+        <div className={classNames(s.container, s[`container-${theme}`])}>
+          <div
+            className={classNames(
+              s["wrapper-logo-nav"],
+              s[`wrapper-logo-nav-${theme}`]
+            )}
+          >
             <Link to="/">
               <Logo />
             </Link>
