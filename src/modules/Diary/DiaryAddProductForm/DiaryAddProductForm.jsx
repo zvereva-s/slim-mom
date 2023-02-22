@@ -2,6 +2,7 @@ import { useMediaPredicate } from "react-media-hook";
 import classNames from "classnames";
 
 import useForm from "./../../../shared/hooks/useForm";
+import useTheme from "../../../shared/hooks/useTheme";
 
 import FormField from "../../../shared/components/FormField";
 import Button from "../../../shared/components/Button";
@@ -11,10 +12,26 @@ import s from "./diaryAddProductForm.module.scss";
 const initialState = { name: "", weight: "" };
 
 function DiaryAddProductForm({ dropdownList, onSubmit, t }) {
+  const { theme } = useTheme();
+
   const less768 = useMediaPredicate("(max-width: 767px)");
   const styleBtn = less768
-    ? classNames("focus", "button", "text")
-    : classNames("plus", "focus", "button");
+    ? classNames(
+        "focus",
+        "button",
+        "text",
+        `focus-${theme}`,
+        `button-${theme}`,
+        `text-${theme}`
+      )
+    : classNames(
+        "plus",
+        "focus",
+        "button",
+        `focus-${theme}`,
+        `button-${theme}`,
+        `plus-${theme}`
+      );
 
   const textBtn = less768 && "Add product";
 
@@ -24,8 +41,11 @@ function DiaryAddProductForm({ dropdownList, onSubmit, t }) {
   });
 
   return (
-    <div className={s["form-wrapper"]}>
-      <form className={s.form} onSubmit={handleSubmit}>
+    <div className={classNames(s["form-wrapper"], s[`form-wrapper-${theme}`])}>
+      <form
+        className={classNames(s.form, s[`form-${theme}`])}
+        onSubmit={handleSubmit}
+      >
         <Dropdown
           list={dropdownList}
           listName="food"
@@ -34,7 +54,7 @@ function DiaryAddProductForm({ dropdownList, onSubmit, t }) {
           value={state.name}
         />
         <FormField
-          className={s["input-gram"]}
+          className={classNames(s["input-gram"], s[`input-gram-${theme}`])}
           type="number"
           name="weight"
           placeholder={t.inputWeight}
