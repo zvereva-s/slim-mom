@@ -1,6 +1,23 @@
 @import '../../../sass/utils/vars';
 @import '../../../sass/utils/mixins';
 
+// Перекривання вшитих настройок від хрому //
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    // border: 0;
+
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 174, 255, 0.04) 50%, rgba(255, 255, 255, 0) 51%, rgba(0, 174, 255, 0.03) 100%);
+}
+
 .input {
     cursor: pointer;
 
@@ -17,11 +34,21 @@
 .invalid__message--wrapper {
     margin-top: 5px;
     padding: 2px 5px;
-    border: 1px solid rgb(255, 94, 0);
+
     border-radius: 4px;
-    color: rgb(255, 94, 0);
+
     font-size: 11px;
     font-weight: 300;
+
+    &-light {
+        border: 1px solid rgb(255, 94, 0);
+        color: rgb(255, 94, 0);
+    }
+
+    &-dark {
+        border: 1px solid rgb(255, 94, 0);
+        color: rgb(255, 94, 0);
+    }
 }
 
 
@@ -50,6 +77,7 @@
     position: relative;
     @include fonts($fs: normal, $fw: 400, $fsz: 14px, $lh: 17px, $ls: 0.04em);
     margin-left: 6px;
+
 }
 
 .input-text {
@@ -57,15 +85,30 @@
     @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 17px, $ls: 0.04em);
 
     border: none;
-    border-bottom: 1px solid $color-line-light;
 
-    color: $color-text-light;
 
     padding-bottom: 10px;
     margin-top: 30px;
 
-    &::placeholder {
+    &-light {
+        border-bottom: 1px solid $color-line-light;
+
         color: $color-text-light;
+
+        &::placeholder {
+            color: $color-text-light;
+        }
+    }
+
+    &-dark {
+        background-color: transparent;
+        border-bottom: 1px solid $color-line-dark;
+
+        color: white;
+
+        &::placeholder {
+            color: white;
+        }
     }
 
     &:focus,
@@ -91,29 +134,56 @@
     height: 20px;
     padding: 3px;
     background-clip: content-box;
-    border: 1px solid $color-line-light;
+
     border-radius: 50%;
 
+    &-light {
+        border: 1px solid $color-line-light;
+
+        &:checked {
+            position: relative;
+            padding: 5px;
+            background-color: $color-focus-light;
 
 
-    &:checked {
-        position: relative;
-        padding: 5px;
-        background-color: $color-focus-light;
-
-
-        &+label {
-            color: $color-focus-light;
-            font-weight: 700;
-        }
-
-        &+.advice {
-            @include mq(mobile) {
-                position: absolute;
-                bottom: -19%;
-                right: 5%;
+            &+label {
+                color: $color-focus-light;
+                font-weight: 700;
             }
 
+            &+.advice {
+                @include mq(mobile) {
+                    position: absolute;
+                    bottom: -19%;
+                    right: 5%;
+                }
+
+            }
+        }
+    }
+
+    &-dark {
+        border: 1px solid $color-line-dark;
+
+        &:checked {
+            position: relative;
+            padding: 5px;
+            background-color: $color-focus-dark;
+
+
+            &+label {
+                color: $color-focus-dark;
+                font-weight: 700;
+            }
+
+            &+.advice {
+                @include mq(mobile) {
+                    position: absolute;
+                    bottom: -19%;
+                    right: 5%;
+                }
+
+            }
         }
     }
 }
@@ -156,24 +226,7 @@
 
 
 
-// Перекривання вшитих настройок від хрому //
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus input:-webkit-autofill,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-    // border: 0;
-
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
-    // background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 174, 255, 0.04) 50%, rgba(255, 255, 255, 0) 51%, rgba(0, 174, 255, 0.03) 100%);
-    color: $color-text;
-    -webkit-text-fill-color: $color-text;
-}
 
 .link-wrapper {
     position: absolute;
