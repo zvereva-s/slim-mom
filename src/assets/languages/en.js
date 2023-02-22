@@ -8,9 +8,9 @@ export const en = {
   signUpBtn: "Sign up",
 
   //SIGN IN
-  signInTitle: "Sign In",
+  signInTitle: "Sign in",
   login: "Login *",
-  signInBtn: "Sign In",
+  signInBtn: "Sign in",
 
   //link Input
   show: "Show",
