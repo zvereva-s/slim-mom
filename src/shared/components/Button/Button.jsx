@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import { HandySvg } from "handy-svg";
 
+import useTheme from "../../hooks/useTheme";
+
 import plus from "../../../assets/images/Button/Plus.svg";
 import close from "../../../assets/images/Button/CloseButton.svg";
 import arrowBack from "../../../assets/images/Button/ArrowMenu.svg";
@@ -13,6 +15,8 @@ import moon from "../../../assets/images/Button/Moon.svg";
 import s from "./button.module.scss";
 
 function Button({ type, text, className, disabled, icon, onClick }) {
+  const { theme } = useTheme();
+
   let svg;
   switch (icon) {
     case "plus":
@@ -54,7 +58,13 @@ function Button({ type, text, className, disabled, icon, onClick }) {
       disabled={disabled}
       onClick={onClick}
     >
-      {text} {svg && <HandySvg src={svg} className={s[`icon-${icon}`]} />}
+      {text}{" "}
+      {svg && (
+        <HandySvg
+          src={svg}
+          className={classNames(s[`icon-${icon}`], s[`icon-${icon}-${theme}`])}
+        />
+      )}
     </button>
   );
 }
