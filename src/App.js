@@ -1,9 +1,12 @@
+import classNames from "classnames";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
 import useAuthState from "./shared/hooks/useAuthState";
 import useCloseModal from "./shared/hooks/useCloseModal";
+import useTheme from "./shared/hooks/useTheme";
 
 import { healthyDataObj } from "./redux/healthyData/healthyData-selectors";
 
@@ -11,7 +14,6 @@ import { getCurrentRequest } from "./redux/auth/auth-operations";
 import { addGoogleAuth } from "./redux/auth/auth-actions";
 
 import UserRoutes from "./UserRoutes";
-import Background from "./shared/components/Background/Background";
 import Modal from "./shared/components/Modal";
 import Notification from "./shared/components/Notification";
 
@@ -31,6 +33,7 @@ function App() {
 
   const dispatch = useDispatch();
   const { isLogin } = useAuthState();
+  const { theme } = useTheme();
 
   const { healthyData } = useSelector(healthyDataObj);
 
@@ -55,10 +58,17 @@ function App() {
           />
         </Modal>
       )}
-      <Background>
+      <div
+        className={classNames(
+          "background",
+          isLogin && "background-auth",
+          `background-${theme}`,
+          `background-auth-${theme}`
+        )}
+      >
         <Header />
         <UserRoutes />
-      </Background>
+      </div>
     </>
   );
 }
