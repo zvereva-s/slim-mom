@@ -31,15 +31,29 @@
     opacity: 0.9;
 
     border-radius: 10px;
-    background-color:$color-focus-light;
+
+    &-light {
+        background-color: $color-focus-light;
+    }
+
+    &-dark {
+        background-color: $color-focus-dark;
+    }
+
 
 }
 
 .text {
     font-family: inherit;
-
-    color: white;
     text-align: left;
+
+    &-light {
+        color: white;
+    }
+
+    &-dark {
+        color: white;
+    }
 
     @include mq(mobile-only) {
         text-align: center;
