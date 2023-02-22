@@ -1,9 +1,12 @@
+import classNames from "classnames";
 
-import s from './link.module.scss'
+import useTheme from "../../hooks/useTheme";
+
+import s from "./link.module.scss";
 
 function Link({ text }) {
-
-    return (<p className={s.link}>{text}</p>)
- }
+  const { theme } = useTheme();
+  return <p className={classNames(s.link, s[`link-${theme}`])}>{text}</p>;
+}
 
 export default Link;
