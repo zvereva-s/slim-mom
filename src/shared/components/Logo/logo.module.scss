@@ -2,6 +2,8 @@
 @import '../../../sass/utils/vars';
 
 .wrapper {
+    position: relative;
+
     display: flex;
     align-items: center;
 
@@ -9,13 +11,42 @@
         align-items: baseline;
     }
 
+    padding-bottom: 5px;
+
+    &-dark {
+        z-index: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+
+
+            width: 55px;
+            height: 55px;
+
+            @include mq(desktop) {
+                width: 65px;
+                height: 65px;
+                top: -10px;
+            }
+
+            border-radius: 50%;
+            z-index: -1;
+
+            transform: translateX(0);
+            transition: background-color $timeDelay $cubic;
+
+            background-color: white;
+            border: 1px solid color-switcher-thumb-background-light;
+        }
+    }
 }
+
 
 .text {
     width: 100px;
     height: 16px;
-
-
 
     @include mq(mobile-only) {
         display: none;
@@ -24,6 +55,40 @@
 
     @include mq(desktop) {
         width: 110px;
+    }
+
+    &-light {
+        fill: $color-dark-light;
+
+        &-auth {
+            @include mq(mobile-only) {
+                display: block;
+                width: 108px;
+                height: 16px;
+            }
+
+            @include mq(tablet-only) {
+                width: 100px;
+                height: 16px;
+            }
+        }
+    }
+
+    &-dark {
+        fill: white;
+
+        &-auth {
+            @include mq(mobile-only) {
+                display: block;
+                width: 108px;
+                height: 16px;
+            }
+
+            @include mq(tablet-only) {
+                width: 100px;
+                height: 16px;
+            }
+        }
     }
 
     &-logo-modal {
@@ -36,16 +101,10 @@
             display: none;
         }
     }
+
+
 }
 
-.text-auth {
-    composes: text;
-
-    @include mq(mobile-only) {
-        display: block;
-        width: 108px;
-    }
-}
 
 .icon {
     width: 47px;
