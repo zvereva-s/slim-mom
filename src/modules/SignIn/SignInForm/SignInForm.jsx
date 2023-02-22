@@ -2,6 +2,7 @@ import classNames from "classnames";
 
 import useTranslate from "../../../shared/hooks/useTranslate";
 import useForm from "../../../shared/hooks/useForm";
+import useTheme from "../../../shared/hooks/useTheme";
 
 import FormField from "../../../shared/components/FormField";
 import Button from "../../../shared/components/Button";
@@ -12,6 +13,7 @@ import { initialState } from "./initialState";
 import s from "./signInForm.module.scss";
 
 function SignInForm({ onSubmit }) {
+  const { theme } = useTheme();
   const { t } = useTranslate();
   const { state, setState, handleChange, handleSubmit, error, validate } =
     useForm({
@@ -48,12 +50,18 @@ function SignInForm({ onSubmit }) {
         <Button
           text={t.signInBtn}
           type="submit"
-          className={classNames("button", "text", "focus")}
+          className={classNames("button", "text", `focus-${theme}`)}
         />
         <Button
           text={t.signUpBtn}
           type="submit"
-          className={classNames("button", "text", "base", "disabled")}
+          className={classNames(
+            "button",
+            "text",
+            "disabled",
+            `button-${theme}`,
+            `disabled-${theme}`
+          )}
           disabled
         />
       </div>
