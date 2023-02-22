@@ -1,3 +1,7 @@
+import classNames from "classnames";
+
+import useTheme from "../../../shared/hooks/useTheme";
+
 import s from "./rightSideListSummary.module.scss";
 
 function RightSideListSummary({
@@ -8,9 +12,10 @@ function RightSideListSummary({
   procentOfDayNorm,
   t,
 }) {
+  const { theme } = useTheme();
   return (
     <div className={s.wrapper}>
-      <h3 className={s.title}>
+      <h3 className={classNames(s.title, s[`title-${theme}`])}>
         {t.summaryTitle} {date}
       </h3>
       <ul className={s.list}>
