@@ -7,11 +7,23 @@
 }
 
 .wrapper-kcal {
-    border-bottom: 1px solid $color-wrapper-kcal-light;
+
     padding-bottom: 30px;
 
-    @include mq(tablet) {
-        border-bottom: transparent;
+    &-light {
+        border-bottom: 1px solid $color-wrapper-kcal-light;
+
+        @include mq(tablet) {
+            border-bottom: transparent;
+        }
+    }
+
+    &-dark {
+        border-bottom: 1px solid $color-wrapper-kcal-dark;
+
+        @include mq(tablet) {
+            border-bottom: transparent;
+        }
     }
 }
 
@@ -21,7 +33,15 @@
 
 
     @include fonts($fs: normal, $fw: 700, $fsz: 48px, $lh: 58px, $ls: 0.04em);
-    color: $color-modal-calories-light;
+
+
+    &-light {
+        color: $color-modal-calories-light;
+    }
+
+    &-dark {
+        color: $color-modal-calories-dark;
+    }
 
     @include mq(tablet) {
         &::after {
@@ -31,7 +51,15 @@
             height: 1px;
             margin: 0 auto;
             margin-top: 30px;
+
+        }
+
+        &-light::after {
             background-color: $color-wrapper-kcal-light;
+        }
+
+        &-dark::after {
+            background-color: $color-wrapper-kcal-dark;
         }
     }
 }
