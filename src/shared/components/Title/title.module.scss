@@ -3,10 +3,20 @@
 
 .title {
     @include fonts($fs: normal, $fw: 700, $fsz: 18px, $lh: 26px, $ls: 0.04em);
-    color: $color-dark;
+
+    &-light {
+        color: $color-dark-light;
+    }
+
+    &-dark {
+        color: $color-dark-dark;
+    }
 
     @include mq(mobile-only) {
         width: 295px;
+        margin-bottom: 20px;
+        padding: 0 23px;
+
     }
 
     @include mq(tablet) {
