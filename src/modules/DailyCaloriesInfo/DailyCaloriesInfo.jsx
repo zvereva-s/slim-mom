@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 import useTranslate from "../../shared/hooks/useTranslate";
+import useTheme from "../../shared/hooks/useTheme";
 
 import Button from "../../shared/components/Button";
 import ModalFormContent from "../../shared/components/ModalFormContent";
@@ -11,22 +12,42 @@ import s from "./dailyCaloriesInfo.module.scss";
 
 function DailyCaloriesInfo({ closeModal, dailyRate, handleClick, list }) {
   const { t } = useTranslate();
+  const { theme } = useTheme();
+
   return (
     <ModalFormContent closeModal={closeModal}>
-      <div className={s.wrapper}>
-        <div className={s["wrapper-kcal"]}>
-          <Title text={t.recomendedDaily} className={s.title} />
-          <p className={s.calories}>
-            {dailyRate} <span className={s.kcal}>{t.kcal}</span>
+      <div className={classNames(s.wrapper, s[`wrapper-${theme}`])}>
+        <div
+          className={classNames(s["wrapper-kcal"], s[`wrapper-kcal-${theme}`])}
+        >
+          <Title
+            text={t.recomendedDaily}
+            className={classNames(s.title, s[`title-${theme}`])}
+          />
+          <p className={classNames(s.calories, s[`calories-${theme}`])}>
+            {dailyRate}{" "}
+            <span className={classNames(s.kcal, s[`kcal-${theme}`])}>
+              {t.kcal}
+            </span>
           </p>
         </div>
-        <NotRecommendedProductList className={s.notRecommend} list={list} />
+        <NotRecommendedProductList
+          className={classNames(s.notRecommend, s[`notRecommend-${theme}`])}
+          list={list}
+        />
       </div>
-      <div className={s["btn-wrapper"]}>
+      <div className={classNames(s["btn-wrapper"], s[`btn-wrapper-${theme}`])}>
         <Button
           type="submit"
           text={t.calculatorBtn}
-          className={classNames("button", "text-modal", "focus")}
+          className={classNames(
+            "button",
+            "text-modal",
+            "focus",
+            `button-${theme}`,
+            `text-${theme}`,
+            `focus-${theme}`
+          )}
           onClick={handleClick}
         />
       </div>
