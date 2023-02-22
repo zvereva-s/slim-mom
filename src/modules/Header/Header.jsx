@@ -5,6 +5,7 @@ import AuthHeader from "./AuthHeader";
 
 function Header() {
   const { isLogin } = useAuthState();
+
   return <>{isLogin ? <AuthHeader /> : <NotAuthHeader />}</>;
 }
 export default Header;
