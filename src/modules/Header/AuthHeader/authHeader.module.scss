@@ -10,16 +10,23 @@
 }
 
 .container {
-    display: flex;
-    border-bottom: 2px solid $color-line-light;
+    @include flex();
+
+    &-light {
+        border-bottom: 2px solid $color-line-light;
+    }
+
+    &-dark {
+        border-bottom: 2px solid $color-line-dark;
+    }
 
 
 
     @include mq(mobile-only) {
 
         justify-content: space-between;
-        padding: 18px 15px;
-        padding-top: 25px;
+        padding: 3px 15px;
+        // padding-top: 25px;
     }
 
     @include mq(tablet-only) {
@@ -35,6 +42,7 @@
         align-items: baseline;
         justify-content: space-between;
     }
+
 
 }
 
