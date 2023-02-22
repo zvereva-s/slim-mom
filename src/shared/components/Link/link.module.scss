@@ -4,4 +4,8 @@
 .link {
     @include fonts();
     color: $color-dark-light;
+
+    &-dark {
+        color: white;
+    }
 }
