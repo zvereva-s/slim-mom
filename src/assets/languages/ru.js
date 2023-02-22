@@ -8,9 +8,9 @@ export const ru = {
   signUpBtn: "Зарегистрироваться",
 
   //SIGN IN
-  signInTitle: "Войти",
+  signInTitle: "Вход",
   login: "Логин *",
-  signInBtn: "Войти",
+  signInBtn: "Вход",
 
   //link Input
   show: "Показать",
