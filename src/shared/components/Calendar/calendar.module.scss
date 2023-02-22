@@ -16,28 +16,46 @@
 .header-button,
 .header-select {
     padding: 20px;
-
-    background-color: white;
-    border: 1px solid rgba(128, 128, 128, 0.265);
-
-
     margin: 0 4px;
 
+    &-light {
+        background-color: white;
+        border: 1px solid rgba(128, 128, 128, 0.265);
+    }
 
+    &-dark {
+        background-color: white;
+        border: 1px solid rgba(128, 128, 128, 0.265);
+    }
 }
 
 .table {
-    background-color: #eaeaea6a;
+
     table-layout: fixed;
     margin: auto;
     width: 90%;
+
+    &-light {
+        background-color: #eaeaea6a;
+    }
+
+    &-dark {
+        background-color: #eaeaea6a;
+    }
 }
 
 .th {
     vertical-align: middle;
     text-align: center;
     height: 36px;
-    color: $color-focus-light;
+
+    &-light {
+        color: $color-focus-light;
+    }
+
+    &-dark {
+        color: $color-focus-dark;
+    }
 }
 
 .day {
@@ -45,32 +63,71 @@
     vertical-align: middle;
     text-align: center;
     padding: 10px 15px;
-
-    background-color: white;
-
-
     margin: 0 4px;
+
+    &-light {
+        background-color: white;
+    }
+
+    &-dark {
+        background-color: white;
+    }
 }
 
-.day:hover {
-    color: white;
-    background-color: #f8b07c;
-    cursor: pointer;
+.day {
+
+    &-light:hover {
+        color: white;
+        background-color: #f8b07c;
+        cursor: pointer;
+    }
+
+    &-dark:hover {
+        color: white;
+        background-color: #f8b07c;
+        cursor: pointer;
+    }
 }
 
 .day.selected {
-    border: 2px solid $color-focus-light;
+    &-light {
+        border: 2px solid $color-focus-light;
+    }
+
+    &-dark {
+        border: 2px solid $color-focus-dark;
+    }
 }
 
 .day.today {
-    background-color: $color-focus-light;
-    color: white;
+    &-light {
+        background-color: $color-focus-light;
+        color: white;
+    }
+
+    &-dark {
+        background-color: $color-focus-dark;
+        color: white;
+    }
 }
 
-.day.today:hover {
-    background-color: black;
+.day.today {
+
+    &-light:hover {
+        background-color: black;
+    }
+
+    &-dark:hover {
+        background-color: black;
+    }
 }
 
 .day.today.selected {
-    border: 2px solid lightgray;
+    &-light {
+        border: 2px solid lightgray;
+    }
+
+    &-dark {
+        border: 2px solid lightgray;
+    }
 }
