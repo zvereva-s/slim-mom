@@ -1,77 +1,31 @@
+import classNames from "classnames";
+
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import classnames from "classnames";
 
+import useTheme from "../../hooks/useTheme";
 import useTranslate from "../../hooks/useTranslate";
 
 import { addDateDiary } from "../../../redux/diary/diary-actions";
 
 import * as calendar from "./calendarUtils";
+import { monthes, days, years } from "./data";
 
 import s from "./calendar.module.scss";
 
 function Calendar({ dateValue }) {
   const { lang } = useTranslate();
+  const { theme } = useTheme();
 
   // STATE
   const [names, setNames] = useState({
-    days: {
-      en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-      ua: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
-      ru: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-    },
-    monthes: {
-      en: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ],
-      ua: [
-        "Січень",
-        "Лютий",
-        "Березень",
-        "Квітень",
-        "Травень",
-        "Червень",
-        "Липень",
-        "Серпень",
-        "Вересень",
-        "Жовтень",
-        "Листопад",
-        "Грудень",
-      ],
-      ru: [
-        "Январь",
-        "Февраль",
-        "Март",
-        "Апрель",
-        "Май",
-        "Июнь",
-        "Июль",
-        "Август",
-        "Сентябрь",
-        "Октябрь",
-        "Ноябрь",
-        "Декабрь",
-      ],
-    },
+    days,
+    monthes,
   });
   const weekDayNames = names.days[lang];
   const monthNames = names.monthes[lang];
-  const years = [
-    2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
-    2028, 2029, 2030,
-  ];
 
   const [date, setDate] = useState(dateValue);
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -105,17 +59,23 @@ function Calendar({ dateValue }) {
   }
 
   return (
-    <div className={s.calendar}>
-      <header className={s.header}>
+    <div className={classNames(s.calendar, s[`calendar-${theme}`])}>
+      <header className={classNames(s.header, s[`header-${theme}`])}>
         <button
-          className={s["header-button"]}
+          className={classNames(
+            s["header-button"],
+            s[`header-button-${theme}`]
+          )}
           onClick={handlePrevMonthButtonClick}
         >
           {"<"}
         </button>
 
         <select
-          className={s["header-select"]}
+          className={classNames(
+            s["header-select"],
+            s[`header-select-${theme}`]
+          )}
           ref={monthSelected}
           value={date.getMonth()}
           onChange={handleSelectChange}
@@ -128,7 +88,10 @@ function Calendar({ dateValue }) {
         </select>
 
         <select
-          className={s["header-select"]}
+          className={classNames(
+            s["header-select"],
+            s[`header-select-${theme}`]
+          )}
           ref={yearSelected}
           onChange={handleSelectChange}
           value={date.getFullYear()}
@@ -141,14 +104,17 @@ function Calendar({ dateValue }) {
         </select>
 
         <button
-          className={s["header-button"]}
+          className={classNames(
+            s["header-button"],
+            s[`header-button-${theme}`]
+          )}
           onClick={handleNextMonthButtonClick}
         >
           {">"}
         </button>
       </header>
 
-      <table className={s.table}>
+      <table className={classNames(s.table, s[`table-${theme}`])}>
         <thead>
           <tr>
             {weekDayNames.map((name) => (
@@ -167,12 +133,19 @@ function Calendar({ dateValue }) {
                   <td
                     className={classnames(
                       s.day,
+                      s[`day-${theme}`],
                       s[
                         {
                           today: calendar.areEqual(date, currentDate),
                           selected: calendar.areEqual(date, selectedDate),
                         }
                       ]
+                      // s[
+                      //   {
+                      //     [`${today}-${theme}`]: calendar.areEqual(date, currentDate),
+                      //     selected: calendar.areEqual(date, selectedDate),
+                      //   }
+                      // ]
                     )}
                     key={idx}
                     onClick={() => handleDayClick(date)}
