@@ -8,9 +8,15 @@
 .container {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid $color-line-light;
 
 
+    &-light {
+        border-bottom: 2px solid $color-line-light;
+    }
+
+    &-dark {
+        border-bottom: 2px solid $color-line-dark;
+    }
 
     @include mq(mobile-only) {
         padding: 18px 15px;
