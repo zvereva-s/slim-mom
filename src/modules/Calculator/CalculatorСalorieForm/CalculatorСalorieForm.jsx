@@ -1,3 +1,4 @@
+import useTheme from "../../../shared/hooks/useTheme";
 import useForm from "../../../shared/hooks/useForm";
 import useTranslate from "../../../shared/hooks/useTranslate";
 
@@ -13,6 +14,7 @@ import { initialState } from "./initialState";
 import s from "./calculatorCalorieFrom.module.scss";
 
 function CalculatorСalorieForm({ onSubmit }) {
+  const { theme } = useTheme();
   const { t } = useTranslate();
   const { state, handleChange, handleSubmit, handleAdvice, advice } = useForm({
     onSubmit,
@@ -21,23 +23,52 @@ function CalculatorСalorieForm({ onSubmit }) {
 
   return (
     <div className={s.box}>
-      <form className={s.form} onSubmit={handleSubmit}>
+      <form
+        className={classNames(s.form, s[`form-${theme}`])}
+        onSubmit={handleSubmit}
+      >
         <TextFields handleChange={handleChange} state={state} />
-        <div className={s["wrapper__bloodtype"]}>
-          <label className={s.bloodType}>{t.bloodType}</label>
-          <div className={s.wrapper}>
+        <div
+          className={classNames(
+            s["wrapper__bloodtype"],
+            s[`wrapper__bloodtype-${theme}`]
+          )}
+        >
+          <label className={classNames(s.bloodType, s[`bloodType-${theme}`])}>
+            {t.bloodType}
+          </label>
+          <div className={classNames(s.wrapper, s[`wrapper-${theme}`])}>
             <RadioFields handleChange={handleChange} type="blood" />
           </div>
         </div>
-        <div className={s["wrapper__gender"]}>
-          <label className={s.gender}>{t.gender}</label>
-          <div className={s.wrapper}>
+        <div
+          className={classNames(
+            s["wrapper__gender"],
+            s[`wrapper__gender-${theme}`]
+          )}
+        >
+          <label className={classNames(s.gender, s[`gender-${theme}`])}>
+            {t.gender}
+          </label>
+          <div className={classNames(s.wrapper, s[`wrapper-${theme}`])}>
             <RadioFields handleChange={handleChange} type="gender" />
           </div>
         </div>
-        <div className={s["wrapper__activity"]}>
-          <label className={s.activity}>{t.physicalActivity}</label>
-          <div className={s["wrapper_activity--fields"]}>
+        <div
+          className={classNames(
+            s["wrapper__activity"],
+            s[`wrapper__activity-${theme}`]
+          )}
+        >
+          <label className={classNames(s.activity, s[`activity-${theme}`])}>
+            {t.physicalActivity}
+          </label>
+          <div
+            className={classNames(
+              s["wrapper_activity--fields"],
+              s[`wrapper_activity--fields-${theme}`]
+            )}
+          >
             <RadioFields
               handleChange={handleChange}
               type="physicalActivity"
@@ -46,9 +77,18 @@ function CalculatorСalorieForm({ onSubmit }) {
             />
           </div>
         </div>
-        <div className={s["wrapper__btn"]}>
+        <div
+          className={classNames(s["wrapper__btn"], s[`wrapper__btn-${theme}`])}
+        >
           <Button
-            className={classNames("button", "text", "focus")}
+            className={classNames(
+              "button",
+              "text",
+              "focus",
+              `button-${theme}`,
+              `text-${theme}`,
+              `focus-${theme}`
+            )}
             type="submit"
             text={t.calculatorBtn}
           />
