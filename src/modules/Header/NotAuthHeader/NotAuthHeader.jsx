@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
-import LangSwitcher from "../components/LangSwitcher";
-import ThemeSwitcher from "../../../shared/components/ThemeSwitcher/ThemeSwitcher";
+import useTheme from "../../../shared/hooks/useTheme";
+
 import Navigation from "../components/Navigation";
+import AdditionalMenu from "../components/AdditionalMenu/AdditionalMenu";
 
 import Logo from "../../../shared/components/Logo";
 
 import s from "./notAuthHeader.module.scss";
 
 function NotAuthHeader() {
+  const { theme } = useTheme();
+
   return (
     <header className={s.header}>
-      <LangSwitcher />
-      <ThemeSwitcher />
-      <div className={s.container}>
+      <AdditionalMenu />
+      <div className={classNames(s.container, s[`container-${theme}`])}>
         <Link to="/">
           <Logo />
         </Link>
