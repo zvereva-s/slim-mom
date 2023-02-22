@@ -1,5 +1,6 @@
 import classNames from "classnames";
 
+import useTheme from "../../hooks/useTheme";
 import useCloseModal from "../../hooks/useCloseModal.js";
 import useBreakpoints from "../../hooks/useBreakpoints";
 
@@ -11,19 +12,26 @@ import Header from "../../../modules/Header";
 import s from "./modalFormContent.module.scss";
 
 function ModalFormContent({ closeModal, children }) {
+  const { theme } = useTheme();
+
   const { bigger768px } = useBreakpoints();
   const icon = !bigger768px ? "arrowBack" : "close-menu";
   const { handleClose } = useCloseModal(closeModal);
 
   return (
     <Modal>
-      <div className={s.overlay} onClick={handleClose}>
+      <div
+        className={classNames(s.overlay, s[`overlay-${theme}`])}
+        onClick={handleClose}
+      >
         {!bigger768px && <Header />}
-        <div className={s.modal}>
-          <div className={s["btn-wrapper"]}>
+        <div className={classNames(s.modal, s[`modal-${theme}`])}>
+          <div
+            className={classNames(s["btn-wrapper"], s[`btn-wrapper-${theme}`])}
+          >
             <Button
               type="button"
-              className={classNames("button")}
+              className={classNames("button", `button-${theme}`)}
               onClick={closeModal}
               icon={icon}
             />
