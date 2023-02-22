@@ -34,6 +34,10 @@
     text-decoration: none;
     color: inherit;
 
+    &-dark {
+        color: $color-text-dark;
+    }
+
     @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 13px, $ls: 0.04);
 
     @include mq(desktop) {
@@ -44,7 +48,16 @@
 
 .isActive {
     composes: link;
-    color: $color-dark;
+
+
+    &-light {
+        color: $color-dark-light;
+    }
+
+    &-dark {
+        color: white;
+
+    }
 }
 
 .item {
@@ -52,17 +65,41 @@
 
     position: relative;
 
-    &:first-child {
-        @include mq(desktop) {
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                right: 84px;
-                top: -12px;
-                width: 2px;
-                height: 32px;
-                background-color: $color-line-light;
+
+    &-light {
+        &:first-child {
+
+            @include mq(desktop) {
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    right: 84px;
+                    top: -12px;
+                    width: 2px;
+                    height: 32px;
+
+                    background-color: $color-line-light;
+
+                }
+            }
+        }
+    }
+
+    &-dark {
+        &:first-child {
+            @include mq(desktop) {
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    right: 84px;
+                    top: -12px;
+                    width: 2px;
+                    height: 32px;
+
+                    background-color: $color-line-dark;
+                }
             }
         }
     }
@@ -78,7 +115,6 @@
             margin-right: 22px;
         }
     }
-
 }
 
 .nav-modal {
