@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 
 import useTranslate from "../../hooks/useTranslate";
+import useTheme from "../../../shared/hooks/useTheme";
 
 import Link from "../Link";
 
@@ -35,6 +36,7 @@ function FormField(props) {
   } = props;
 
   const { t } = useTranslate();
+  const { theme } = useTheme();
 
   const [showLink, setShowLink] = useState(false);
   const [typeInput, setTypeInput] = useState(type);
@@ -43,11 +45,18 @@ function FormField(props) {
 
   const isRadio = type === "radio" ? true : false;
 
-  const labelStyle = isRadio ? s["label-radio"] : s["label-text"];
+  const labelStyle = isRadio
+    ? classNames(s["label-radio"], s[`label-radio-${theme}`])
+    : classNames(s["label-text"], s[`label-text-${theme}`]);
 
   const inputStyle = isRadio
-    ? s["input-radio"]
-    : classNames(s["input-text"], s.input, `${s} ${className}`);
+    ? classNames(s["input-radio"], s[`input-radio-${theme}`])
+    : classNames(
+        s["input-text"],
+        s[`input-text-${theme}`],
+        s.input,
+        `${s} ${className}`
+      );
 
   const handleLink = () => {
     setShowLink(!showLink);
@@ -84,7 +93,14 @@ function FormField(props) {
           </div>
         )}
         {error?.message && error.type === type && (
-          <p className={s[`invalid__message--wrapper`]}>{error?.message}</p>
+          <p
+            className={classNames(
+              s[`invalid__message--wrapper`],
+              s[`invalid__message--wrapper-${theme}`]
+            )}
+          >
+            {error?.message}
+          </p>
         )}
       </div>
     </>
@@ -92,7 +108,9 @@ function FormField(props) {
 
   const radioField = (
     <>
-      <div className={s["radio-wrapper"]}>
+      <div
+        className={classNames(s["radio-wrapper"], s[`radio-wrapper-${theme}`])}
+      >
         <input
           className={inputStyle}
           id={id}
