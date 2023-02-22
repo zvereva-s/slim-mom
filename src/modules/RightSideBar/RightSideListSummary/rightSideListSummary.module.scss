@@ -10,7 +10,14 @@
 }
 
 .title {
-    color: black;
+
+    &-light {
+        color: black;
+    }
+
+    &-dark {
+        color: black;
+    }
 }
 
 .list {
