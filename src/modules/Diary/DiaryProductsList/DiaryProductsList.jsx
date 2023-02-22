@@ -1,5 +1,9 @@
+import classNames from "classnames";
+
 import { useDispatch } from "react-redux";
 import { deleteProductRequest } from "../../../redux/diary/diary-operations";
+
+import useTheme from "../../../shared/hooks/useTheme";
 
 import DiaryProductsListItem from "./DiaryProductsListItem/DiaryProductsListItem";
 
@@ -9,14 +13,15 @@ import s from "./diaryProductsList.module.scss";
 
 function DiaryProductsList({ products, t }) {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
 
   function deleteProduct(id) {
     dispatch(deleteProductRequest(id));
   }
   return (
     <>
-      <div className={s.wrapper}>
-        <ul className={s.list}>
+      <div className={classNames(s.wrapper, s[`wrapper-${theme}`])}>
+        <ul className={classNames(s.list, s[`list-${theme}`])}>
           {products.map((product) => (
             <DiaryProductsListItem
               key={product._id}
@@ -29,7 +34,7 @@ function DiaryProductsList({ products, t }) {
           ))}
         </ul>
       </div>
-      {/* <div className={s.shadow}></div> */}
+      {/* <div className={classNames(s.shadow, s[`shadow-${theme}`])}></div> */}
     </>
   );
 }
