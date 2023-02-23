@@ -50,10 +50,21 @@
     display: flex;
     align-items: center;
 
+    &-light {
+        fill: $color-dark-light;
+
+    }
+
+    &-dark {
+        fill: $color-dark-dark;
+
+    }
+
     @include mq(desktop) {
         display: none;
     }
 }
+
 
 .wrapper-logo-nav {
     display: flex;
