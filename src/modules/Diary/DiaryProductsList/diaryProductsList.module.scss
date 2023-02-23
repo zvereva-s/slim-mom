@@ -13,6 +13,9 @@
     overflow-y: scroll;
     overflow-x: clip;
 
+    &-withoutScroll {
+        overflow-y: hidden;
+    }
 
     @include mq(tablet) {
         width: 552px;
