@@ -32,7 +32,7 @@ function ModalNavigation({ closeModal, isModalOpen }) {
           <div className={s["btn-wrapper"]}>
             <Button
               type="button"
-              className={classNames("button")}
+              className={classNames("button", `icon-${theme}`)}
               onClick={closeModal}
               icon="close-menu"
             />
