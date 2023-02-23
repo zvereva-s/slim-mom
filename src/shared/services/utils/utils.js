@@ -3,6 +3,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { en } from "../../../assets/languages/en";
+import { ua } from "../../../assets/languages/ua";
+import { ru } from "../../../assets/languages/ru";
+
 export const createOperation = (name, request, condition) => {
   return createAsyncThunk(
     name,
@@ -55,49 +59,63 @@ export const notify = (message, type) => {
   return <ToastContainer />;
 };
 
-export const adviceActivity = (field) => {
-  const { value } = field;
-
+export const adviceActivity = ({ value }, lang) => {
   let result = {
     message: "",
     value: "",
   };
+
+  let text = null;
+  switch (lang) {
+    case "en": {
+      text = en;
+      break;
+    }
+    case "ru": {
+      text = ru;
+      break;
+    }
+    case "ua": {
+      text = ua;
+      break;
+    }
+  }
+
   switch (value) {
     case "1.2":
       result = {
-        message: "minimal (sedentary work, lack of physical activity)",
+        message: text.minimalAdv,
         value: "1.2",
       };
       break;
     case "1.375":
       result = {
-        message: "low (training for at least 20 minutes 1-3 times a week)",
+        message: text.lowAdv,
         value: "1.375",
       };
       break;
     case "1.55":
       result = {
-        message: "moderate (training 30-60 minutes 3-4 times a week)",
+        message: text.moderateAdv,
         value: "1.55",
       };
       break;
     case "1.7":
       result = {
-        message:
-          "high (training 30-60 min 5-7 times a week; hard physical work)",
+        message: text.highAdv,
         value: "1.7",
       };
       break;
     case "1.9":
       result = {
-        message:
-          "extreme (several intense workouts a day 6-7 times a week; very laborious work)",
+        message: text.extremeAdv,
         value: "1.9",
       };
       break;
     default:
       result = {};
   }
+
   return result;
 };
 
