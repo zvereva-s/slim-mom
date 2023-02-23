@@ -47,6 +47,7 @@ $color-line-dark: #E0E0E0;
 $color-mobile-bg-dark: #EFF1F3;
 $color-placeholder-dark: #E0E0E0;
 $color-text-dark: #ababab;
+$background-sec-dark: #333333;
 
 //switcher
 $color-switcher-thumb-background-dark: rgb(110, 110, 110);
@@ -60,5 +61,6 @@ $mainFont: "Verdana", sans-serif, arial;
 
 
 //Анимация//
+$timeDelayNormal: 250ms;
 $timeDelay: 1050ms;
 $cubic: cubic-bezier(0.4, 0, 0.2, 1);
