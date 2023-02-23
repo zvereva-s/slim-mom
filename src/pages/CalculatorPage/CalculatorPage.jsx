@@ -18,8 +18,10 @@ function CalculatorPage() {
     <Main>
       <Section className="mobile-section-auth">
         <Container>
-          <Title text={title} />
-          <Calculator />
+          <div className="wrapper-calendar">
+            <Title text={title} />
+            <Calculator />
+          </div>
         </Container>
       </Section>
 
