@@ -104,6 +104,7 @@
 .burger {
     width: 24px;
     height: 24px;
+
 }
 
 .icon-plus {
@@ -129,7 +130,7 @@
     }
 
     &-dark {
-        stroke: #9B9FAA;
+        stroke: white;
     }
 
     &-menu {
@@ -142,7 +143,7 @@
         }
 
         &-dark {
-            stroke: black;
+            stroke: white;
         }
     }
 }
