@@ -23,7 +23,10 @@ function UserInfo() {
   return (
     <div className={classNames(s.wrapper, s[`wrapper-${theme}`])}>
       <p className={classNames(s.item, s[`item-${theme}`])}>{user.name}</p>
-      <p className={classNames(s.item, s[`item-${theme}`])} onClick={logout}>
+      <p
+        className={classNames(s.item, s.link, s[`item-${theme}`])}
+        onClick={logout}
+      >
         {t.logOut}
       </p>
     </div>
