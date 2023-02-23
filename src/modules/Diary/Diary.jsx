@@ -124,9 +124,14 @@ function Diary() {
 
   return (
     <>
-      <DiaryDateCalendar onClick={toggleCalendar} openCalendar={openCalendar} />
-      {less768px && markupLessThan768}
-      {bigger768px && markupBiggerThan768}
+      <div className={s.wrapper}>
+        <DiaryDateCalendar
+          onClick={toggleCalendar}
+          openCalendar={openCalendar}
+        />
+        {less768px && markupLessThan768}
+        {bigger768px && markupBiggerThan768}
+      </div>
     </>
   );
 }
