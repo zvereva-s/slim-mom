@@ -61,6 +61,10 @@
         fill: $color-dark-light;
 
         &-auth {
+            width: 100px;
+            height: 16px;
+            fill: $color-dark-light;
+
             @include mq(mobile-only) {
                 display: block;
                 width: 108px;
@@ -78,6 +82,10 @@
         fill: white;
 
         &-auth {
+            width: 100px;
+            height: 16px;
+            fill: white;
+
             @include mq(mobile-only) {
                 display: block;
                 width: 108px;
