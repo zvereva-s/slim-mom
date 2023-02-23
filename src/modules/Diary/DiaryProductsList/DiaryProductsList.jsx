@@ -18,9 +18,17 @@ function DiaryProductsList({ products, t }) {
   function deleteProduct(id) {
     dispatch(deleteProductRequest(id));
   }
+
+  const styleForWrapper = products.length < 5 ? "withoutScroll" : "";
   return (
     <>
-      <div className={classNames(s.wrapper, s[`wrapper-${theme}`])}>
+      <div
+        className={classNames(
+          s.wrapper,
+          s[`wrapper-${theme}`],
+          s[`wrapper-${styleForWrapper}`]
+        )}
+      >
         <ul className={classNames(s.list, s[`list-${theme}`])}>
           {products.map((product) => (
             <DiaryProductsListItem
