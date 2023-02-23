@@ -1,15 +1,24 @@
 import classNames from "classnames";
 import { useMediaPredicate } from "react-media-hook";
+
+import useAuthState from "../../hooks/useAuthState";
+import useTheme from "../../hooks/useTheme";
+
 import s from "./section.module.scss";
 
-const isAuth = false;
-
 function Section({ children, className }) {
-  const biggerThan1280 = useMediaPredicate("(min-width: 1280px)");
+  const { isLogin } = useAuthState();
+  const { theme } = useTheme();
+
+  const biggerThan1280 = useMediaPredicate("(min-width: 1279px)");
   const style =
-    isAuth && biggerThan1280
-      ? classNames(s[`${className}`], s["section-auth"])
-      : classNames(s[`${className}`], s.section);
+    isLogin && biggerThan1280
+      ? classNames(
+          s[`${className}`],
+          s[`${className}-${theme}`],
+          s["section-auth"]
+        )
+      : classNames(s[`${className}`], s[`${className}-${theme}`], s.section);
 
   return <section className={style}>{children}</section>;
 }
