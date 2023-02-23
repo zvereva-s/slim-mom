@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { adviceActivity, validateField } from "../services/utils/utils";
 
 import PropTypes from "prop-types";
@@ -15,8 +16,9 @@ const useForm = ({ onSubmit, initialState }) => {
     value: "",
   });
 
-  const handleAdvice = ({ target }) => {
-    const result = adviceActivity(target);
+  const handleAdvice = ({ target }, lang) => {
+    const result = adviceActivity(target, lang);
+
     setAdvice(result);
   };
 
