@@ -53,8 +53,6 @@
         color: $color-text-light;
 
         &:first-child {
-            color: black;
-
             &::after {
                 content: '';
                 display: block;
@@ -69,11 +67,9 @@
     }
 
     &-dark {
-        color: $color-text-dark;
+        color: $color-line-dark;
 
         &:first-child {
-            color: black;
-
             &::after {
                 content: '';
                 display: block;
@@ -86,4 +82,8 @@
             }
         }
     }
+}
+
+.link {
+    cursor: pointer;
 }
