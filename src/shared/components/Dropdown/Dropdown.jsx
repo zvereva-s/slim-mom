@@ -1,19 +1,26 @@
 import React from "react";
 
 import classNames from "classnames";
+
 import useTranslate from "../../hooks/useTranslate";
+import useTheme from "../../hooks/useTheme";
 
 import s from "../FormField/formField.module.scss";
 
 function Dropdown({ list, listName, id, handleChange, value }) {
   const { lang, t } = useTranslate();
+  const { theme } = useTheme();
 
   const options = list.map(({ key, name }) => ({
     value: String(key),
     label: name[lang],
   }));
 
-  const inputStyle = classNames(s["input-text"], s.input);
+  const inputStyle = classNames(
+    s["input-text"],
+    s.input,
+    s[`input-text-${theme}`]
+  );
   return (
     <>
       <input
