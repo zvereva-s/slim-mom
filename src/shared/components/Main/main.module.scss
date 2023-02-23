@@ -1,4 +1,15 @@
-.main-flex {
-    display: flex;
-    justify-content: center;
+@import '../../../sass/utils/mixins';
+
+.container {
+
+    @include mq(desktop) {
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+}
+
+.wrapper-flex {
+    display: grid;
+    grid-template-columns: 1.7fr 1.3fr;
 }
