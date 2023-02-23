@@ -3,6 +3,7 @@
 
 
 
+
 .form {
     display: flex;
     flex-direction: column;
@@ -32,12 +33,19 @@
     }
 
     @include mq(desktop) {
-        width: 850px;
+        width: 650px;
         padding: 20px;
         padding-bottom: 40px;
 
-        display: flex;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 30px 100px;
+        grid-template-areas:
+            "textFields activity"
+            "gender blood"
+            "button button";
+
+
     }
 
     &-light {
@@ -49,7 +57,9 @@
     }
 }
 
-
+.textFileds {
+    grid-area: textFields;
+}
 
 .label,
 .bloodType,
@@ -78,6 +88,7 @@
     align-items: center;
     justify-content: start;
     margin-top: 8.5px;
+
 }
 
 .wrapper__bloodtype,
@@ -91,11 +102,26 @@
 
     @include mq(desktop) {
         width: 240px;
+
     }
 }
 
+.wrapper__bloodtype {
+    @include mq(desktop) {
+        grid-area: blood;
+    }
+}
+
+.wrapper__gender {
+    @include mq(desktop) {
+        grid-area: gender;
+    }
+}
+
+
 .wrapper_activity {
     margin-bottom: 40px;
+    grid-area: activity;
 
     @include mq(tablet) {
         margin-bottom: 0px;
@@ -114,7 +140,10 @@
         }
 
         @include mq(desktop) {
+            display: grid;
+            grid-template-columns: repeat(2fr);
             gap: 10px;
+
         }
     }
 }
@@ -126,6 +155,10 @@
         position: absolute;
         bottom: 15px;
         left: 2%
+    }
+
+    @include mq(desktop) {
+        grid-area: button;
     }
 
 }
