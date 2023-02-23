@@ -59,12 +59,11 @@ function App() {
         </Modal>
       )}
       <div
-        className={classNames(
-          "background",
-          isLogin && "background-auth",
-          `background-${theme}`,
-          `background-auth-${theme}`
-        )}
+        className={
+          isLogin
+            ? classNames(`background-auth-${theme}`, "background-auth")
+            : classNames(`background-${theme}`, "background")
+        }
       >
         <Header />
         <UserRoutes />
