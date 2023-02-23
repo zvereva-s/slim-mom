@@ -2,7 +2,7 @@
 @import '../utils/vars';
 
 .background {
-    // height: 100vh;
+    height: 100vh;
 
     background-repeat: no-repeat;
 
@@ -35,13 +35,15 @@
 }
 
 .background-auth {
+    height: 100vh;
+
     @include mq(tablet-only) {
         &-light {
             background-color: white;
         }
 
         &-dark {
-            background-color: $bg-color-dark;
+            background-color: $background-sec-dark;
 
         }
     }
@@ -58,7 +60,7 @@
         }
 
         &-dark {
-            background-image: url('../../assets/images/Background/Background-Auth/Desktop/leaves.png'), linear-gradient(to right, rgb(21, 20, 20) 56.5%, $bg-color-dark 43.5%);
+            background-image: url('../../assets/images/Background/Background-Auth/Desktop/leaves.png'), linear-gradient(to right, $background-sec-dark 56.5%, $bg-color-dark 43.5%);
         }
     }
 
