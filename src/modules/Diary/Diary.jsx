@@ -92,7 +92,7 @@ function Diary() {
 
   const markupLessThan768 = (
     <>
-      {products.length > 0 && <DiaryProductList list={products} />}
+      {products.length > 0 && <DiaryProductList products={products} t={t} />}
       <div className={classNames(s["wrapper-btn"], s[`wrapper-btn-${theme}`])}>
         <Button
           type="button"
@@ -107,7 +107,13 @@ function Diary() {
           )}
           onClick={showModal}
         />
-        {openModal && <DiaryAddProductFormMobile closeModal={closeModal} />}
+        {openModal && (
+          <DiaryAddProductFormMobile
+            closeModal={closeModal}
+            dropdownList={foodListForChoose}
+            onSubmit={onSubmit}
+          />
+        )}
       </div>
     </>
   );
@@ -116,7 +122,6 @@ function Diary() {
       <DiaryAddProductForm
         dropdownList={foodListForChoose}
         onSubmit={onSubmit}
-        t={t}
       />
       {products.length > 0 && <DiaryProductList products={products} t={t} />}
     </>
