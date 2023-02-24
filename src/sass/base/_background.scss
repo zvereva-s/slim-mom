@@ -24,18 +24,29 @@
     }
 
     &-light {
+
         background-color: white;
     }
 
     &-dark {
         background-color: $bg-color-dark;
-
     }
 
 }
 
 .background-auth {
     height: 100vh;
+
+    @include mq(mobile-only) {
+        &-light {
+            background-color: white;
+        }
+
+        &-dark {
+            background-color: $background-sec-dark;
+
+        }
+    }
 
     @include mq(tablet-only) {
         &-light {
