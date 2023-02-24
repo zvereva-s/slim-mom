@@ -1,3 +1,4 @@
+@import '../../../../sass/utils/mixins';
 @import '../../../../sass/utils/vars';
 
 .overlay {
@@ -38,6 +39,10 @@
     &-dark {
         background-color: $color-modal-calories-dark;
     }
+
+    @include mq(mobile-only) {
+        top: 85px;
+    }
 }
 
 .wrapper-logo-nav {
@@ -48,12 +53,24 @@
 
     border-bottom: 3px solid white;
 
+    @include mq(mobile-only) {
+        @include flex();
+        justify-content: space-between;
+        padding: 3px 15px;
+        padding-top: 30px;
+    }
+
 }
 
 .btn-wrapper {
     position: absolute;
-    top: 63px;
+    top: 41px;
     right: 55px;
     width: 24px;
     height: 24px;
+
+    @include mq(mobile-only) {
+        padding-right: 30px;
+        position: static;
+    }
 }
