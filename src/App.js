@@ -45,7 +45,7 @@ function App() {
       dispatch(addGoogleAuth(userGoogleAuth));
     }
     dispatch(getCurrentRequest());
-  }, [dispatch, healthyData?.dailyRate]);
+  }, [dispatch]);
 
   return (
     <>
