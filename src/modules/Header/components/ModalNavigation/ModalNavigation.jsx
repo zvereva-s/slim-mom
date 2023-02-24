@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
@@ -48,3 +49,12 @@ function ModalNavigation({ closeModal, isModalOpen }) {
   );
 }
 export default ModalNavigation;
+
+ModalNavigation.defaultProps = {
+  closeModal: () => {},
+};
+
+ModalNavigation.propTypes = {
+  closeModal: PropTypes.func,
+  isModalOpen: PropTypes.bool,
+};

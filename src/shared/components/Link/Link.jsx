@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTheme from "../../hooks/useTheme";
@@ -10,3 +11,10 @@ function Link({ text }) {
 }
 
 export default Link;
+
+Link.defaultProps = {
+  text: "",
+};
+Link.propTypes = {
+  text: PropTypes.string,
+};

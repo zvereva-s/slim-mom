@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTranslate from "../../../shared/hooks/useTranslate";
@@ -69,3 +70,10 @@ function SignInForm({ onSubmit }) {
   );
 }
 export default SignInForm;
+
+SignInForm.defaultProps = {
+  onSubmit: () => {},
+};
+SignInForm.propTypes = {
+  onSubmit: PropTypes.func,
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import { HandySvg } from "handy-svg";
 
@@ -69,3 +70,19 @@ function Button({ type, text, className, disabled, icon, onClick }) {
   );
 }
 export default Button;
+
+Button.defaultProps = {
+  type: "button",
+  text: "",
+  className: "button",
+  onClick: () => {},
+};
+
+Button.propTypes = {
+  type: PropTypes.string,
+  text: PropTypes.string,
+  className: PropTypes.string,
+  disabled: PropTypes.string,
+  icon: PropTypes.string,
+  onClick: PropTypes.func,
+};

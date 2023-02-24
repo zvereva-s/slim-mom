@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { HandySvg } from "handy-svg";
 import classNames from "classnames";
 
@@ -26,3 +27,7 @@ function Logo({ isModalOpen }) {
   );
 }
 export default Logo;
+
+Logo.propTypes = {
+  isModalOpen: PropTypes.func,
+};

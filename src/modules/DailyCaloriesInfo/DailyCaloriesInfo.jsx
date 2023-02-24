@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTranslate from "../../shared/hooks/useTranslate";
@@ -55,3 +56,16 @@ function DailyCaloriesInfo({ closeModal, dailyRate, handleClick, list }) {
   );
 }
 export default DailyCaloriesInfo;
+
+DailyCaloriesInfo.defaultProps = {
+  dailyRate: "",
+  list: [],
+  handleClick: () => {},
+  closeModal: () => {},
+};
+DailyCaloriesInfo.propTypes = {
+  dailyRate: PropTypes.string,
+  list: PropTypes.array.isRequired,
+  handleClick: PropTypes.func,
+  closeModal: PropTypes.func,
+};

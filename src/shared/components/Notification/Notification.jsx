@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTheme from "../../hooks/useTheme";
@@ -17,3 +18,13 @@ function Notification({ text, onClick }) {
 }
 
 export default Notification;
+
+Notification.defaultProps = {
+  text: "",
+  onClick: () => {},
+};
+
+Notification.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func,
+};

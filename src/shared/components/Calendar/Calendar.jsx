@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import { HandySvg } from "handy-svg";
 
@@ -170,3 +171,12 @@ function Calendar({ dateValue, closeCalendar }) {
 }
 
 export default Calendar;
+
+Calendar.defaultProps = {
+  dateValue: Date.now(),
+  closeCalendar: () => {},
+};
+
+Calendar.propTypes = {
+  closeCalendar: PropTypes.func,
+};

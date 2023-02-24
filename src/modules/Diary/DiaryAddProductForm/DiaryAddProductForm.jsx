@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useMediaPredicate } from "react-media-hook";
 import classNames from "classnames";
 
@@ -77,3 +78,12 @@ function DiaryAddProductForm({ dropdownList, onSubmit }) {
   );
 }
 export default DiaryAddProductForm;
+
+DiaryAddProductForm.defaultProps = {
+  dropdownList: [],
+  onSubmit: () => {},
+};
+DiaryAddProductForm.propTypes = {
+  dropdownList: PropTypes.array,
+  onSubmit: PropTypes.func,
+};

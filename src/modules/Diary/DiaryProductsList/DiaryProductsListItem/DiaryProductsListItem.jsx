@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTheme from "../../../../shared/hooks/useTheme";
@@ -60,3 +61,15 @@ function DiaryProductsListItem({
   );
 }
 export default DiaryProductsListItem;
+
+DiaryProductsListItem.defaultProps = {
+  onClick: () => {},
+  t: () => {},
+};
+DiaryProductsListItem.propTypes = {
+  name: PropTypes.string,
+  weight: PropTypes.string,
+  sumCaloriesOfProduct: PropTypes.string,
+  onClick: PropTypes.func,
+  t: PropTypes.func,
+};

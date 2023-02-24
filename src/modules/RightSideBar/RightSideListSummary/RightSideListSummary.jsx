@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTheme from "../../../shared/hooks/useTheme";
@@ -60,3 +61,15 @@ function RightSideListSummary({
   );
 }
 export default RightSideListSummary;
+
+RightSideListSummary.defaultProps = {
+  t: () => {},
+};
+RightSideListSummary.propTypes = {
+  dailyRate: PropTypes.string,
+  date: PropTypes.string,
+  left: PropTypes.string,
+  consumed: PropTypes.string,
+  procentOfDayNorm: PropTypes.string,
+  t: PropTypes.func,
+};

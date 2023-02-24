@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { useSelector } from "react-redux";
 import { HandySvg } from "handy-svg";
 import classNames from "classnames";
@@ -39,3 +41,11 @@ function DiaryDateСalendar({ onClick, openCalendar }) {
   );
 }
 export default DiaryDateСalendar;
+
+DiaryDateСalendar.defaultProps = {
+  onClick: () => {},
+};
+DiaryDateСalendar.propTypes = {
+  onClick: PropTypes.func,
+  openCalendar: PropTypes.bool,
+};

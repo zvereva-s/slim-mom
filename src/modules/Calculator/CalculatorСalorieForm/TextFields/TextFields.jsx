@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import useTranslate from "../../../../shared/hooks/useTranslate";
 
 import FormField from "../../../../shared/components/FormField";
@@ -23,3 +24,12 @@ function TextFields({ handleChange, state }) {
   return <>{textFields}</>;
 }
 export default TextFields;
+
+TextFields.defaultProps = {
+  state: {},
+  handleChange: () => {},
+};
+TextFields.propTypes = {
+  state: PropTypes.object,
+  handleChange: PropTypes.func,
+};

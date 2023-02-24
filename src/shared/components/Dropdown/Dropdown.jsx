@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTranslate from "../../hooks/useTranslate";
@@ -41,3 +41,16 @@ function Dropdown({ list, listName, id, handleChange, value }) {
   );
 }
 export default Dropdown;
+
+Dropdown.defaultProps = {
+  list: [],
+  listName: [],
+  handleChange: () => {},
+};
+Dropdown.propTypes = {
+  list: PropTypes.array,
+  listName: PropTypes.array,
+  id: PropTypes.string,
+  handleChange: PropTypes.func,
+  value: PropTypes.number,
+};

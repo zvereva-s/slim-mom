@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import { useMediaPredicate } from "react-media-hook";
 
@@ -23,3 +24,10 @@ function Section({ children, className }) {
   return <section className={style}>{children}</section>;
 }
 export default Section;
+
+Section.defaultProps = {
+  className: "",
+};
+Section.propTypes = {
+  className: PropTypes.string,
+};

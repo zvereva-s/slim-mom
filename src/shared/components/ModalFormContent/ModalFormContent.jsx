@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTheme from "../../hooks/useTheme";
@@ -43,3 +44,10 @@ function ModalFormContent({ closeModal, children }) {
   );
 }
 export default ModalFormContent;
+
+ModalFormContent.defaultProps = {
+  closeModal: () => {},
+};
+ModalFormContent.propTypes = {
+  closeModal: PropTypes.func,
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import useTranslate from "../../hooks/useTranslate";
@@ -35,3 +36,12 @@ function NotRecommendedProductList({ className, list }) {
   );
 }
 export default NotRecommendedProductList;
+
+NotRecommendedProductList.defaultProps = {
+  className: "",
+  list: [],
+};
+NotRecommendedProductList.propTypes = {
+  className: PropTypes.string,
+  list: PropTypes.array,
+};

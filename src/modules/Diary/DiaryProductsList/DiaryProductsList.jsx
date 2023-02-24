@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import { useDispatch } from "react-redux";
@@ -46,3 +47,12 @@ function DiaryProductsList({ products, t }) {
   );
 }
 export default DiaryProductsList;
+
+DiaryProductsList.defaultProps = {
+  products: [],
+  t: () => {},
+};
+DiaryProductsList.propTypes = {
+  products: PropTypes.array,
+  t: PropTypes.func,
+};

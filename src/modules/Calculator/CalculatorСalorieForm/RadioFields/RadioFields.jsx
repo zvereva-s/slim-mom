@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import useTranslate from "../../../../shared/hooks/useTranslate";
 
 import FormField from "../../../../shared/components/FormField";
@@ -35,3 +36,16 @@ function RadioFields({ handleChange, type, handleAdvice, advice }) {
   return <>{radioFields}</>;
 }
 export default RadioFields;
+
+RadioFields.defaultProps = {
+  advice: "",
+  handleAdvice: () => {},
+  type: "radio",
+  handleChange: () => {},
+};
+RadioFields.propTypes = {
+  advice: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  handleAdvice: PropTypes.func,
+  handleChange: PropTypes.func,
+};
