@@ -32,7 +32,9 @@ function DiaryDateСalendar({ onClick, openCalendar }) {
           src={icon}
         />
       </div>
-      {openCalendar && <Calendar dateValue={dateValue} />}
+      {openCalendar && (
+        <Calendar dateValue={dateValue} closeCalendar={onClick} />
+      )}
     </div>
   );
 }
