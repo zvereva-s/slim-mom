@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 import useForm from "./../../../shared/hooks/useForm";
 import useTheme from "../../../shared/hooks/useTheme";
+import useTranslate from "../../../shared/hooks/useTranslate";
 
 import FormField from "../../../shared/components/FormField";
 import Button from "../../../shared/components/Button";
@@ -11,8 +12,9 @@ import Dropdown from "../../../shared/components/Dropdown/Dropdown";
 import s from "./diaryAddProductForm.module.scss";
 const initialState = { name: "", weight: "" };
 
-function DiaryAddProductForm({ dropdownList, onSubmit, t }) {
+function DiaryAddProductForm({ dropdownList, onSubmit }) {
   const { theme } = useTheme();
+  const { t } = useTranslate();
 
   const less768 = useMediaPredicate("(max-width: 767px)");
   const styleBtn = less768
