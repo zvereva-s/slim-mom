@@ -38,7 +38,7 @@ const authSlice = createSlice({
       store.loading = false;
       store.error = null;
       store.user = {
-        id: payload._id,
+        id: payload.id,
         email: payload.email,
         name: payload.name,
       };
@@ -55,22 +55,14 @@ const authSlice = createSlice({
       .addCase(signinRequest.fulfilled, fulfilled)
 
       .addCase(logoutRequest.pending, pending)
-      .addCase(logoutRequest.fulfilled, () => ({
-        user: {},
-        token: "",
-        isLogin: false,
+      .addCase(logoutRequest.fulfilled, () => ({ ...initialState }))
 
+      .addCase(getCurrentRequest.pending, pending)
+      .addCase(getCurrentRequest.fulfilled, (store, { payload }) => ({
+        ...store,
         loading: false,
         error: null,
       }))
-
-      .addCase(getCurrentRequest.pending, pending)
-      .addCase(getCurrentRequest.fulfilled, (store, { payload }) => {
-        if (payload.token) {
-          return { ...store, loading: false, error: null };
-        }
-        return { ...initialState };
-      })
 
       .addMatcher(isRejectedAction, rejected);
   },
