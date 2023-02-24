@@ -6,6 +6,9 @@
     @include mq(mobile-only) {
         position: relative;
 
+        &-dark {
+            background-color: $background-sec-dark;
+        }
     }
 }
 
