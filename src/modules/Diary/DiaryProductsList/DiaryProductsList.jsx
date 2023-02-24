@@ -42,7 +42,6 @@ function DiaryProductsList({ products, t }) {
           ))}
         </ul>
       </div>
-      {/* <div className={classNames(s.shadow, s[`shadow-${theme}`])}></div> */}
     </>
   );
 }
