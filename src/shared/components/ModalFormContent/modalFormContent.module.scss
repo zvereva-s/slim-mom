@@ -24,6 +24,10 @@
 .modal {
     padding-top: 80px;
 
+    &-dark {
+        background-color: $background-sec-dark;
+    }
+
     @include mq(tablet) {
         position: absolute;
         left: 50%;
