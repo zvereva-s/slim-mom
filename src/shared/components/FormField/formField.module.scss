@@ -90,6 +90,10 @@ select:-webkit-autofill:focus {
     padding-bottom: 10px;
     margin-top: 30px;
 
+    @include mq(mobile-only) {
+        width: 100%;
+    }
+
     &-light {
         border-bottom: 1px solid $color-line-light;
 
