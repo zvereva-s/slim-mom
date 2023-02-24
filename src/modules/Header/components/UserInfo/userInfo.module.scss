@@ -27,7 +27,8 @@
         }
 
         &-dark {
-            background-color: $color-mobile-bg-dark;
+            background-color: transparent;
+            border-bottom: 1px solid $color-line-dark;
         }
     }
 
