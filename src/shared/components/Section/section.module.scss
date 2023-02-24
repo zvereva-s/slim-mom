@@ -44,6 +44,10 @@
     padding-top: 40px;
     background-color: $bg-color-light;
 
+    &-dark {
+        background-color: $bg-color-dark;
+    }
+
     @include mq(tablet-only) {
         padding: 91px 87px;
         background-image: url('../../../assets/images/Background/Background-Auth/Tablet/leaves.png');
@@ -51,9 +55,6 @@
         background-position: 100% 100%;
         background-size: auto;
 
-        &-dark {
-            background-color: $bg-color-dark;
-        }
     }
 
     @include mq(desktop) {
