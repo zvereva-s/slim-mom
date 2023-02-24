@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import useTheme from "../../../shared/hooks/useTheme";
 import useForm from "../../../shared/hooks/useForm";
 import useTranslate from "../../../shared/hooks/useTranslate";
@@ -99,3 +101,10 @@ function CalculatorСalorieForm({ onSubmit }) {
   );
 }
 export default CalculatorСalorieForm;
+
+CalculatorСalorieForm.defaultProps = {
+  onSubmit: () => {},
+};
+CalculatorСalorieForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
