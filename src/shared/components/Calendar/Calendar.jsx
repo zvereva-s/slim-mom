@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { HandySvg } from "handy-svg";
 
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -13,9 +14,11 @@ import { addDateDiary } from "../../../redux/diary/diary-actions";
 import * as calendar from "./calendarUtils";
 import { monthes, days, years } from "./data";
 
+import arrowLeft from "../../../assets/images/Button/arrow-left.svg";
+import arrowRight from "../../../assets/images/Button/arrow-right.svg";
 import s from "./calendar.module.scss";
 
-function Calendar({ dateValue }) {
+function Calendar({ dateValue, closeCalendar }) {
   const { lang } = useTranslate();
   const { theme } = useTheme();
 
@@ -54,112 +57,114 @@ function Calendar({ dateValue }) {
   }
   function handleDayClick(date) {
     setSelectedDate(date);
+    closeCalendar();
 
     dispatch(addDateDiary(date));
   }
 
   return (
-    <div className={classNames(s.calendar, s[`calendar-${theme}`])}>
-      <header className={classNames(s.header, s[`header-${theme}`])}>
-        <button
-          className={classNames(
-            s["header-button"],
-            s[`header-button-${theme}`]
-          )}
-          onClick={handlePrevMonthButtonClick}
-        >
-          {"<"}
-        </button>
-
-        <select
-          className={classNames(
-            s["header-select"],
-            s[`header-select-${theme}`]
-          )}
-          ref={monthSelected}
-          value={date.getMonth()}
-          onChange={handleSelectChange}
-        >
-          {monthNames.map((name, index) => (
-            <option key={name} value={index}>
-              {name}
-            </option>
-          ))}
-        </select>
-
-        <select
-          className={classNames(
-            s["header-select"],
-            s[`header-select-${theme}`]
-          )}
-          ref={yearSelected}
-          onChange={handleSelectChange}
-          value={date.getFullYear()}
-        >
-          {years.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-
-        <button
-          className={classNames(
-            s["header-button"],
-            s[`header-button-${theme}`]
-          )}
-          onClick={handleNextMonthButtonClick}
-        >
-          {">"}
-        </button>
-      </header>
-
-      <table className={classNames(s.table, s[`table-${theme}`])}>
-        <thead>
-          <tr>
-            {weekDayNames.map((name) => (
-              <th className={s.th} key={name}>
+    <div className={s.wrapper}>
+      <div className={classNames(s.calendar, s[`calendar-${theme}`])}>
+        <header className={classNames(s.header, s[`header-${theme}`])}>
+          <div
+            className={s[`header-button`]}
+            onClick={handlePrevMonthButtonClick}
+          >
+            <HandySvg
+              className={classNames(s.icon, s[`icon-${theme}`])}
+              src={arrowLeft}
+            />
+          </div>
+          <select
+            className={classNames(
+              s["header-select"],
+              s[`header-select-${theme}`]
+            )}
+            ref={monthSelected}
+            value={date.getMonth()}
+            onChange={handleSelectChange}
+          >
+            {monthNames.map((name, index) => (
+              <option key={name} value={index}>
                 {name}
-              </th>
+              </option>
             ))}
-          </tr>
-        </thead>
+          </select>
 
-        <tbody>
-          {monthData.map((week, index) => (
-            <tr key={index} className={s.week}>
-              {week.map((date, idx) =>
-                date ? (
-                  <td
-                    className={classnames(
-                      s.day,
-                      s[`day-${theme}`],
-                      s[
-                        {
-                          today: calendar.areEqual(date, currentDate),
-                          selected: calendar.areEqual(date, selectedDate),
-                        }
-                      ]
-                      // s[
-                      //   {
-                      //     [`${today}-${theme}`]: calendar.areEqual(date, currentDate),
-                      //     selected: calendar.areEqual(date, selectedDate),
-                      //   }
-                      // ]
-                    )}
-                    key={idx}
-                    onClick={() => handleDayClick(date)}
-                  >
-                    {date.getDate()}
-                  </td>
-                ) : (
-                  <td key={idx} />
-                )
-              )}
+          <select
+            className={classNames(
+              s["header-select"],
+              s[`header-select-${theme}`]
+            )}
+            ref={yearSelected}
+            onChange={handleSelectChange}
+            value={date.getFullYear()}
+          >
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+
+          <div
+            className={s[`header-button`]}
+            onClick={handleNextMonthButtonClick}
+          >
+            <HandySvg
+              className={classNames(s.icon, s[`icon-${theme}`])}
+              src={arrowRight}
+            />
+          </div>
+        </header>
+
+        <table className={classNames(s.table, s[`table-${theme}`])}>
+          <thead>
+            <tr>
+              {weekDayNames.map((name) => (
+                <th className={s.th} key={name}>
+                  {name}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {monthData.map((week, index) => (
+              <tr key={index} className={s.week}>
+                {week.map((date, idx) =>
+                  date ? (
+                    <td
+                      className={classnames(
+                        s.day,
+                        s[`day-${theme}`],
+                        s[
+                          {
+                            today: calendar.areEqual(date, currentDate),
+                            selected: calendar.areEqual(date, selectedDate),
+                          }
+                        ]
+                        // s[
+                        //   {
+                        //     [`${today}-${theme}`]: calendar.areEqual(date, currentDate),
+                        //     selected: calendar.areEqual(date, selectedDate),
+                        //   }
+                        // ]
+                      )}
+                      key={idx}
+                      onClick={() => handleDayClick(date)}
+                    >
+                      {date.getDate()}
+                    </td>
+                  ) : (
+                    <td key={idx} />
+                  )
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
