@@ -22,8 +22,11 @@
             left: 0;
 
 
-            width: 55px;
-            height: 55px;
+            @include mq(mobile-only) {
+                width: 50px;
+                height: 50px;
+                left: 2px;
+            }
 
             @include mq(desktop) {
                 width: 65px;
@@ -104,6 +107,10 @@
         height: 16px;
 
         margin-left: 11px;
+
+        @include mq(mobile-only) {
+            display: none;
+        }
 
         @include mq(tablet) {
             display: none;
