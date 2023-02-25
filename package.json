@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^7.0.3"
+    "node-sass": "^7.0.3",
+    "react-native-dotenv": "^3.4.8"
   }
 }
