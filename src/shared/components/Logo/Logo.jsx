@@ -29,5 +29,5 @@ function Logo({ isModalOpen }) {
 export default Logo;
 
 Logo.propTypes = {
-  isModalOpen: PropTypes.func,
+  isModalOpen: PropTypes.bool,
 };
