@@ -76,13 +76,14 @@ Button.defaultProps = {
   text: "",
   className: "button",
   onClick: () => {},
+  disabled: false,
 };
 
 Button.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
   className: PropTypes.string,
-  disabled: PropTypes.string,
+  disabled: PropTypes.bool,
   icon: PropTypes.string,
   onClick: PropTypes.func,
 };
