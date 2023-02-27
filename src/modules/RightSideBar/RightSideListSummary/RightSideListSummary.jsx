@@ -14,6 +14,7 @@ function RightSideListSummary({
   t,
 }) {
   const { theme } = useTheme();
+
   return (
     <div className={s.wrapper}>
       <h3 className={classNames(s.title, s[`title-${theme}`])}>
@@ -62,14 +63,11 @@ function RightSideListSummary({
 }
 export default RightSideListSummary;
 
-RightSideListSummary.defaultProps = {
-  t: () => {},
-};
 RightSideListSummary.propTypes = {
   dailyRate: PropTypes.string,
   date: PropTypes.string,
   left: PropTypes.string,
   consumed: PropTypes.string,
   procentOfDayNorm: PropTypes.string,
-  t: PropTypes.func,
+  t: PropTypes.object,
 };
