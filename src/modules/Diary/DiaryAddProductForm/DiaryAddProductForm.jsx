@@ -36,7 +36,7 @@ function DiaryAddProductForm({ dropdownList, onSubmit }) {
         `plus-${theme}`
       );
 
-  const textBtn = less768 && "Add product";
+  const textBtn = less768 ? "Add product" : "";
 
   const { state, handleSubmit, handleChange } = useForm({
     onSubmit,
