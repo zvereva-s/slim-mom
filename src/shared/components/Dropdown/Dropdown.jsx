@@ -44,13 +44,12 @@ export default Dropdown;
 
 Dropdown.defaultProps = {
   list: [],
-  listName: [],
   handleChange: () => {},
 };
 Dropdown.propTypes = {
   list: PropTypes.array,
-  listName: PropTypes.array,
+  listName: PropTypes.string,
   id: PropTypes.string,
   handleChange: PropTypes.func,
-  value: PropTypes.number,
+  value: PropTypes.string,
 };
