@@ -63,7 +63,7 @@ function SignInForm({ onSubmit }) {
             `button-${theme}`,
             `disabled-${theme}`
           )}
-          disabled
+          disabled={true}
         />
       </div>
     </form>
