@@ -1,0 +1,90 @@
+@import '../../../../sass/utils/mixins';
+@import '../../../../sass/utils/vars';
+
+
+
+.wrapper {
+
+    display: flex;
+    align-items: center;
+
+    @include mq(mobile-only) {
+        position: absolute;
+        z-index: 0;
+
+        top: 82px;
+        right: 0;
+        left: 0;
+
+        justify-content: flex-end;
+
+
+        padding: 15px;
+        padding-bottom: 13px;
+
+        &-light {
+            background-color: $color-mobile-bg-light;
+        }
+
+        &-dark {
+            background-color: transparent;
+            border-bottom: 1px solid $color-line-dark;
+        }
+    }
+
+    @include mq(tablet-only) {
+
+        margin-left: 240px;
+        margin-right: 50px;
+    }
+
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    @include fonts($fs: normal,
+        $fw: 700,
+        $fsz: 14px,
+        $lh: 13px,
+        $ls: 0.04em);
+
+
+    &-light {
+        color: $color-text-light;
+
+        &:first-child {
+            &::after {
+                content: '';
+                display: block;
+                margin-left: 15px;
+                margin-right: 15px;
+                width: 2px;
+                height: 32px;
+                left: 240px;
+                background-color: $color-line-light;
+            }
+        }
+    }
+
+    &-dark {
+        color: $color-line-dark;
+
+        &:first-child {
+            &::after {
+                content: '';
+                display: block;
+                margin-left: 15px;
+                margin-right: 15px;
+                width: 2px;
+                height: 32px;
+                left: 240px;
+                background-color: $color-line-dark;
+            }
+        }
+    }
+}
+
+.link {
+    cursor: pointer;
+}

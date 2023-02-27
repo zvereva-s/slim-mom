@@ -1,0 +1,200 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.wrapper {
+    position: relative;
+}
+
+.calendar {
+    @include flex();
+
+    flex-direction: column;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 5px;
+
+    position: absolute;
+    top: -21px;
+    z-index: 10;
+
+    &-light {
+        background-color: $bg-color-light;
+    }
+
+    &-dark {
+        color: white;
+        background-color: $bg-color-dark;
+    }
+
+    @include mq(mobile-only) {
+        top: 17px;
+        left: -192px;
+        background-color: $color-focus-dark;
+        border: 1px solid $color-box-shadow-orange-dark;
+    }
+}
+
+.header {
+    @include flex();
+    margin-bottom: 8px;
+}
+
+.header-button {
+    @include flex();
+}
+
+.header-select {
+    border-radius: 5px;
+    margin: 0 4px;
+
+    &-light {
+        color: $color-dark-light;
+        background-color: white;
+        border: 1px solid rgba(128, 128, 128, 0.265);
+    }
+
+    &-dark {
+        color: white;
+        background-color: $bg-color-dark;
+        border: 1px solid rgba(128, 128, 128, 0.265);
+    }
+}
+
+.header-select {
+    padding: 2px 4px;
+    @include fonts();
+    font-weight: 600;
+
+    @include mq(mobile-only) {
+        font-size: 18px;
+    }
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+
+    &:hover {
+        fill: $color-focus-dark;
+    }
+
+    &-light {
+        fill: $color-dark-light;
+    }
+
+    &-dark {
+        fill: white;
+    }
+}
+
+.table {
+
+    table-layout: fixed;
+    margin: auto;
+    padding: 0 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+
+    @include mq(mobile-only) {
+        font-size: 18px;
+    }
+
+    &-dark {
+        color: white;
+    }
+
+}
+
+.th {
+    vertical-align: middle;
+    text-align: center;
+    height: 36px;
+
+    &-light {
+        color: $color-focus-light;
+    }
+
+    &-dark {
+        color: $color-focus-dark;
+    }
+}
+
+.day {
+
+    vertical-align: middle;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 2px;
+    margin: 0 4px;
+
+    &-light {
+        background-color: white;
+    }
+
+    &-dark {
+        background-color: $color-switcher-thumb-background-dark;
+    }
+
+    @include mq(mobile-only) {
+        padding: 7px;
+    }
+
+}
+
+.day {
+
+    &-light:hover {
+        color: white;
+        background-color: #f8b07c;
+        cursor: pointer;
+    }
+
+    &-dark:hover {
+        color: white;
+        background-color: #f8b07c;
+        cursor: pointer;
+    }
+}
+
+.day.selected {
+    &-light {
+        border: 2px solid $color-focus-light;
+    }
+
+    &-dark {
+        border: 2px solid $color-focus-dark;
+    }
+}
+
+.day.today {
+    &-light {
+        background-color: $color-focus-light;
+        color: white;
+    }
+
+    &-dark {
+        background-color: $color-focus-dark;
+        color: white;
+    }
+}
+
+.day.today {
+
+    &-light:hover {
+        background-color: black;
+    }
+
+    &-dark:hover {
+        background-color: black;
+    }
+}
+
+.day.today.selected {
+    &-light {
+        border: 2px solid lightgray;
+    }
+
+    &-dark {
+        border: 2px solid lightgray;
+    }
+}

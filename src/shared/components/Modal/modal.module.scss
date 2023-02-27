@@ -1,0 +1,82 @@
+@import '../../../sass/utils/vars';
+
+.overlay {
+    position: fixed;
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100vw;
+    height: 100%;
+
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+
+    &-add-form+.overlay {
+        top: 140px;
+        background-color: white;
+
+    }
+
+    &-menu {
+        top: 82px;
+
+        background-color: white;
+    }
+}
+
+.modal-wrapper-add-form {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: white;
+}
+
+.modal-wrapper-menu {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: $color-modal-calories-light;
+}
+
+.modal-wrapper-menu {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: $color-modal-calories-light;
+}
+
+.btn-wrapper-add-form {
+    position: absolute;
+    top: -45px;
+    left: 10px;
+}
+
+.btn {
+    padding: 10px;
+
+    border-color: transparent;
+    background-color: transparent;
+
+}
+
+.icon-add-form {
+    width: 12px;
+    height: 15px;
+}
+
+.icon-menu {
+    width: 10px;
+    height: 10px;
+}

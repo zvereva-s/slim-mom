@@ -1,0 +1,145 @@
+@import '../../../../sass/utils/mixins';
+@import '../../../../sass/utils/vars';
+
+.nav {
+    display: flex;
+}
+
+.nav-isLogin {
+
+    display: none;
+
+    @include mq(desktop) {
+        display: flex;
+    }
+}
+
+
+
+.list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+
+    @include mq(desktop) {
+        margin-left: 44px;
+    }
+
+}
+
+
+.link {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+
+    &-dark {
+        color: $color-text-dark;
+    }
+
+    @include fonts($fs: normal, $fw: 700, $fsz: 14px, $lh: 13px, $ls: 0.04);
+
+    @include mq(desktop) {
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+.isActive {
+    composes: link;
+
+
+    &-light {
+        color: $color-dark-light;
+    }
+
+    &-dark {
+        color: white;
+
+    }
+}
+
+.item {
+    display: flex;
+
+    position: relative;
+
+
+    &-light {
+        &:first-child {
+
+            @include mq(desktop) {
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: -15px;
+                    top: -12px;
+                    width: 2px;
+                    height: 32px;
+
+                    background-color: $color-line-light;
+
+                }
+            }
+        }
+    }
+
+    &-dark {
+        &:first-child {
+            @include mq(desktop) {
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: -15px;
+                    top: -12px;
+                    width: 2px;
+                    height: 32px;
+
+                    background-color: $color-line-dark;
+                }
+            }
+        }
+    }
+
+    &:not(:last-child) {
+        margin-right: 16px;
+
+        @include mq(mobile-only) {
+            margin-right: 15px;
+        }
+
+        @include mq(desktop) {
+            margin-right: 22px;
+        }
+    }
+}
+
+.nav-modal {
+    padding-top: 60px;
+
+    & .list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & .link {
+        @include fonts($fs: normal, $fw: 700, $fsz: 18px, $lh: 22px, $ls: 0.04);
+
+        &.isActive {
+            color: white;
+        }
+    }
+
+    & .item {
+        margin-right: 0;
+
+        &:not(:last-child) {
+            margin-bottom: 40px;
+        }
+    }
+}

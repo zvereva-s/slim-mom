@@ -1,0 +1,102 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.icon-moon,
+.icon-sun {
+    height: 26px;
+    width: 26px;
+
+}
+
+
+.wrapper {
+    position: relative;
+
+    width: 80px;
+    padding: 5px 5px;
+
+    border-radius: 50px;
+
+
+    gap: 1.33rem;
+    cursor: pointer;
+
+    @include flex();
+
+    @include mq(mobile-only) {
+        width: 60px;
+        height: 20px;
+    }
+
+    &-light {
+        background-color: $color-switcher-thumb-background-light;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 35px;
+            height: 35px;
+
+            @include mq(mobile-only) {
+                width: 25px;
+                height: 25px;
+            }
+
+            border-radius: 50%;
+            z-index: 0;
+
+            transform: translateX(0);
+            transition: background-color $timeDelay $cubic;
+
+
+            -webkit-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+            -moz-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+            box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+
+
+            background-color: $color-switcher-background-light;
+            border: 1px solid color-switcher-thumb-background-light;
+        }
+    }
+
+    &-dark {
+        background-color: $color-switcher-thumb-background-dark;
+
+        &::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 35px;
+            height: 35px;
+
+
+            @include mq(mobile-only) {
+                width: 25px;
+                height: 25px;
+            }
+
+            border-radius: 50%;
+            z-index: 0;
+
+            transform: translateX(0);
+            transition: background-color $timeDelay $cubic;
+
+
+            -webkit-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+            -moz-box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+            box-shadow: 4px 2px 5px 0px rgba(214, 214, 214, 0.44);
+
+
+            background-color: $color-switcher-background-light;
+            border: 1px solid color-switcher-thumb-background-light;
+        }
+    }
+
+
+}
+
+
+.wrapper .icon {
+    z-index: 1;
+}

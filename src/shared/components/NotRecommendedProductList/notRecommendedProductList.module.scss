@@ -1,0 +1,26 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.wrapper {
+    @include mq(mobile-only) {
+        margin-top: 40px;
+    }
+}
+
+
+.title {
+    &-dark {
+        color: white;
+    }
+
+}
+
+.list {
+    // list-style: none;
+    margin-top: 20px;
+
+
+    &-dark {
+        color: $color-text-dark;
+    }
+}

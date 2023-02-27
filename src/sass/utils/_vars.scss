@@ -1,0 +1,66 @@
+// Цвета//
+//? LIGHT THEME
+
+//TODO CALCULATOR FORM 
+$color-background-form-light: rgba(255, 255, 255, 0.585);
+$color-box-shadow-orange-light: rgba(252, 132, 45, 0.5);
+
+//TODO DAILYCALORIESINFO
+$color-wrapper-kcal-light: #E0E0E0;
+
+//TODO DIARYDATECALENDAR
+
+
+
+$bg-color-light: #F0F1F3;
+$color-focus-light: #FC842D;
+$color-dark-light: #212121;
+$color-modal-calories-light: #264061;
+$color-white-light: #ffffff;
+$color-line-light: #E0E0E0;
+$color-mobile-bg-light: #EFF1F3;
+$color-placeholder-light: #9b9faa80;
+$color-text-light: #4d5056;
+
+//switcher
+$color-switcher-thumb-background-light: rgb(197, 255, 135);
+$color-switcher-background-light: white;
+
+
+//? DARK THEME
+
+//TODO CALCULATOR FORM 
+$color-background-form-dark: rgba(255, 255, 255, 0.585);
+$color-box-shadow-orange-dark: rgba(252, 132, 45, 0.5);
+
+//TODO DAILYCALORIESINFO
+$color-wrapper-kcal-dark: #E0E0E0;
+
+//TODO DIARYDATECALENDAR
+
+$bg-color-dark: #4d5056;
+$color-focus-dark: #FC842D;
+$color-dark-dark: #ffffff;
+$color-modal-calories-dark: #264061;
+$color-white-dark: #ffffff;
+$color-line-dark: #E0E0E0;
+$color-mobile-bg-dark: #EFF1F3;
+$color-placeholder-dark: #E0E0E0;
+$color-text-dark: #ababab;
+$background-sec-dark: #333333;
+
+//switcher
+$color-switcher-thumb-background-dark: rgb(110, 110, 110);
+$color-switcher-background-dark: rgb(145, 145, 233);
+
+
+
+// ===================== //
+// Шрифты//
+$mainFont: "Verdana", sans-serif, arial;
+
+
+//Анимация//
+$timeDelayNormal: 250ms;
+$timeDelay: 1050ms;
+$cubic: cubic-bezier(0.4, 0, 0.2, 1);

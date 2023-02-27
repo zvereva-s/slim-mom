@@ -1,0 +1,47 @@
+@import '../../../sass/utils/mixins';
+@import '../../../sass/utils/vars';
+
+.header {
+    background-color: transparent;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+
+
+    &-light {
+        border-bottom: 2px solid $color-line-light;
+    }
+
+    &-dark {
+        border-bottom: 2px solid $color-line-dark;
+    }
+
+    @include mq(mobile-only) {
+        padding: 18px 15px;
+    }
+
+    @include mq(tablet-only) {
+        padding: 17px 70px;
+    }
+
+    @include mq(desktop) {
+        border-bottom: none;
+        padding: 0 90px;
+        padding-top: 82px;
+
+        justify-content: start;
+        align-items: baseline;
+    }
+
+}
+
+.icon-wrapper {
+    @include flex();
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
