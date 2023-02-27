@@ -38,13 +38,13 @@ function RadioFields({ handleChange, type, handleAdvice, advice }) {
 export default RadioFields;
 
 RadioFields.defaultProps = {
-  advice: "",
+  advice: {},
   handleAdvice: () => {},
   type: "radio",
   handleChange: () => {},
 };
 RadioFields.propTypes = {
-  advice: PropTypes.string,
+  advice: PropTypes.object,
   type: PropTypes.string.isRequired,
   handleAdvice: PropTypes.func,
   handleChange: PropTypes.func,
