@@ -146,6 +146,7 @@ FormField.defaultProps = {
   handleChange: () => {},
 };
 FormField.propTypes = {
+  advice: PropTypes.object,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
