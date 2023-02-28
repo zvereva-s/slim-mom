@@ -7,7 +7,6 @@ import s from "./authSocial.module.scss";
 function AuthSocial() {
   return (
     <div className={s.wrapper}>
-      {/* <Button type='button' icon="fb" className={classNames("button")}/> */}
       <Button
         type="button"
         icon="google"
