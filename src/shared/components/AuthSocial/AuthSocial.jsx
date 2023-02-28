@@ -1,16 +1,24 @@
+import classNames from "classnames";
 
-import classNames from 'classnames';
+import Button from "../Button";
 
-import Button from '../Button';
+import s from "./authSocial.module.scss";
 
-import s from './authSocial.module.scss'
-
-function AuthSocial() { 
-    return (
-        <div className={s.wrapper}>
-            {/* <Button type='button' icon="fb" className={classNames("button")}/> */}
-            <Button type='button' icon="google" className={classNames("button")} onClick={()=>{ window.location.replace('http://localhost:3003/api/auth/google')}} />
-        </div>
-    )
+function AuthSocial() {
+  return (
+    <div className={s.wrapper}>
+      {/* <Button type='button' icon="fb" className={classNames("button")}/> */}
+      <Button
+        type="button"
+        icon="google"
+        className={classNames("button")}
+        onClick={() => {
+          window.location.replace(
+            "https://slim-mom-backend.onrender.com/api/auth/google"
+          );
+        }}
+      />
+    </div>
+  );
 }
 export default AuthSocial;
