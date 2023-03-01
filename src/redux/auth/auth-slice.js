@@ -23,7 +23,6 @@ const fulfilled = (store, { payload }) => {
   store.user = payload.user;
   store.token = payload.token;
   store.isLogin = true;
-  store.verify = payload.verify;
 };
 
 const isRejectedAction = (action) => {

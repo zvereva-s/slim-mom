@@ -19,10 +19,13 @@ export async function signin(data) {
   return result;
 }
 
-export async function logout() {
-  const { data: result } = await instanceClear.post("/auth/logout");
+export async function logout(token) {
+  if (token) {
+    const { data: result } = await instanceClear.post("/auth/logout");
+    setToken("");
+    return result;
+  }
   setToken("");
-  return result;
 }
 
 export async function getCurrent(token) {

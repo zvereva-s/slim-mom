@@ -12,12 +12,12 @@ import s from "./userInfo.module.scss";
 
 function UserInfo() {
   const dispatch = useDispatch();
-  const { user } = useAuthState();
+  const { user, token } = useAuthState();
   const { t } = useTranslate();
   const { theme } = useTheme();
 
   const logout = () => {
-    dispatch(logoutRequest());
+    dispatch(logoutRequest(token));
   };
 
   return (
