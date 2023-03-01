@@ -11,7 +11,8 @@ function Title({ text, nameClass }) {
     <h1
       className={classNames(
         s.title,
-        s[`title-${theme}`] && s[`title-${nameClass}`]
+        s[`title-${theme}`],
+        s[`title-${nameClass}`]
       )}
     >
       {text}
