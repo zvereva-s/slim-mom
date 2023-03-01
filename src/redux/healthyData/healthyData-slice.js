@@ -14,7 +14,12 @@ import { pending, rejected } from "../../shared/services/utils/utils";
 
 const initialState = {
   healthyData: {},
-  summary: {},
+  summary: {
+    left: "0",
+    consumed: "0",
+    dailyRate: "0",
+    procentOfDayNorm: "0",
+  },
 
   loading: false,
   error: null,
