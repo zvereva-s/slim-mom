@@ -35,8 +35,6 @@ function RightSideBar() {
 
   const { left, consumed, procentOfDayNorm } = useSelector(summaryObj);
 
-  console.log({ token });
-
   useEffect(() => {
     if (token) {
       dispatch(summaryOfDayRequest(`${day}.${month}.${year}`));
