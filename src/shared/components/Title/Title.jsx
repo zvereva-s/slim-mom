@@ -4,12 +4,15 @@ import useTheme from "../../../shared/hooks/useTheme";
 
 import s from "./title.module.scss";
 
-function Title({ text, className }) {
+function Title({ text, nameClass }) {
   const { theme } = useTheme();
 
   return (
     <h1
-      className={classNames(`${s}${className}`, s.title, s[`title-${theme}`])}
+      className={classNames(
+        s.title,
+        s[`title-${theme}`] && s[`title-${nameClass}`]
+      )}
     >
       {text}
     </h1>
