@@ -4,13 +4,8 @@
 .title {
     @include fonts($fs: normal, $fw: 700, $fsz: 18px, $lh: 26px, $ls: 0.04em);
 
-    &-light {
-        color: $color-dark-light;
-    }
-
-    &-dark {
-        color: $color-dark-dark;
-    }
+    color: $color-focus;
+    font-size: 14px;
 
     @include mq(mobile-only) {
         width: 295px;
