@@ -9,7 +9,7 @@ export const ua = {
 
   //SIGN IN
   signInTitle: "Ввійти",
-  login: "Логін(email) *",
+  login: "Логін (email) *",
   signInBtn: "Ввійти",
 
   //link Input

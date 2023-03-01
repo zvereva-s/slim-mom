@@ -9,7 +9,7 @@ export const en = {
 
   //SIGN IN
   signInTitle: "Sign in",
-  login: "Login(email) *",
+  login: "Email *",
   signInBtn: "Sign in",
 
   //link Input

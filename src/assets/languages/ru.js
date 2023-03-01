@@ -9,7 +9,7 @@ export const ru = {
 
   //SIGN IN
   signInTitle: "Вход",
-  login: "Логин(email) *",
+  login: "Логин (email) *",
   signInBtn: "Вход",
 
   //link Input
