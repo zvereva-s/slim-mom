@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { ProgressBar } from "react-loader-spinner";
 
 import useAuthState from "../../shared/hooks/useAuthState";
-import { signupRequest } from "../../redux/auth/auth-operations";
+import { signupRequest, logoutRequest } from "../../redux/auth/auth-operations";
 import { getErrorMessage, notify } from "../../shared/services/utils/utils";
 
 import SignUpForm from "./SignUpForm";
@@ -13,7 +13,6 @@ function SignUp() {
   const dispatch = useDispatch();
   const { error, loading } = useAuthState();
   let errMessage = error ? getErrorMessage(error) : "";
- 
 
   function onSubmit(data) {
     dispatch(signupRequest(data));

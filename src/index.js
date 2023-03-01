@@ -14,7 +14,7 @@ import { store, persistor } from "./redux/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <BrowserRouter>
+  <BrowserRouter basename="https://slim-mom-static.onrender.com">
     <Provider store={store}>
       <LanguageProvider>
         <ThemeProvider>
