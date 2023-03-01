@@ -9,7 +9,7 @@ export const en = {
 
   //SIGN IN
   signInTitle: "Sign in",
-  login: "Login *",
+  login: "Login(email) *",
   signInBtn: "Sign in",
 
   //link Input
@@ -47,6 +47,7 @@ export const en = {
   addFormInput: "Type name of the product",
   inputWeight: "Grams",
   g: "г",
+  addProduct: "Add product",
 
   //SUMMARY
   summaryTitle: "Summary for",

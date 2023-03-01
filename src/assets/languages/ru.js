@@ -9,7 +9,7 @@ export const ru = {
 
   //SIGN IN
   signInTitle: "Вход",
-  login: "Логин *",
+  login: "Логин(email) *",
   signInBtn: "Вход",
 
   //link Input
@@ -47,6 +47,7 @@ export const ru = {
   addFormInput: "Введите название продукта",
   inputWeight: "Грамм",
   g: "g",
+  addProduct: "Добавить продукт",
 
   //SUMMARY
   summaryTitle: "Итоги на ",
