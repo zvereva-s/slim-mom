@@ -214,3 +214,36 @@ export const converToDate = (dateValue) => {
 
   return { year, month, day };
 };
+
+export function makeUniqueRandomNotRecommendedProductList(list) {
+  let resultList = [];
+  let counter = 0;
+
+  const randomArr = [];
+  const uniqueArr = [];
+
+  // choosing random products
+  (function () {
+    if (list) {
+      while (counter < 5) {
+        randomArr.push(list[Math.floor(Math.random() * 48)]);
+        counter += 1;
+      }
+    }
+  })();
+
+  (function () {
+    for (let item of randomArr) {
+      if (!uniqueArr.includes(item)) {
+        uniqueArr.push(item);
+      }
+    }
+  })();
+  if (uniqueArr.length === 5) {
+    resultList = uniqueArr;
+  } else {
+    resultList.push(list[Math.floor(Math.random() * 48)]);
+  }
+
+  return resultList;
+}

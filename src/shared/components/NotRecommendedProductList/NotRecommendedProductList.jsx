@@ -4,20 +4,15 @@ import classNames from "classnames";
 import useTranslate from "../../hooks/useTranslate";
 import useTheme from "../../hooks/useTheme";
 
+import { makeUniqueRandomNotRecommendedProductList } from "../../../shared/services/utils/utils";
+
 import s from "./notRecommendedProductList.module.scss";
 
 function NotRecommendedProductList({ className, list }) {
   const { theme } = useTheme();
   const { t } = useTranslate();
-  let contentList = [];
-  let counter = 0;
 
-  if (list) {
-    while (counter < 5) {
-      contentList.push(list[Math.floor(Math.random() * (47 - 1) + 1)]);
-      counter += 1;
-    }
-  }
+  const contentList = makeUniqueRandomNotRecommendedProductList(list);
 
   return (
     <div className={`${s} ${s.wrapper} ${className}`}>
