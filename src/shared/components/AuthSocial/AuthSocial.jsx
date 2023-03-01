@@ -13,7 +13,7 @@ function AuthSocial() {
         className={classNames("button")}
         onClick={() => {
           window.location.replace(
-            "https://slim-mom-backend.onrender.com/api/auth/google/callback"
+            "https://slim-mom-static.onrender.com/api/auth/google/callback"
           );
         }}
       />
