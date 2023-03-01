@@ -13,6 +13,7 @@ import { converToDate } from "../../shared/services/utils/utils";
 import RightSideListSummary from "./RightSideListSummary";
 import NotRecommendedProductList from "../../shared/components/NotRecommendedProductList";
 
+import useAuthState from "../../shared/hooks/useAuthState";
 import useTranslate from "../../shared/hooks/useTranslate";
 
 import s from "./rightSideBar.module.scss";
@@ -27,14 +28,20 @@ function RightSideBar() {
 
   const date = `${year}/${month}/${day}`;
 
+  const { token } = useAuthState();
+
   const { healthyData } = useSelector(healthyDataObj);
   const { notAllowedProducts, dailyRate } = healthyData;
 
   const { left, consumed, procentOfDayNorm } = useSelector(summaryObj);
 
+  console.log({ token });
+
   useEffect(() => {
-    dispatch(summaryOfDayRequest(`${day}.${month}.${year}`));
-  }, []);
+    if (token) {
+      dispatch(summaryOfDayRequest(`${day}.${month}.${year}`));
+    }
+  }, [token]);
 
   return (
     <div className={s.wrapper}>
