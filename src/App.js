@@ -38,6 +38,9 @@ function App() {
   const { healthyData } = useSelector(healthyDataObj);
 
   useEffect(() => {
+    if (theme === "dark" && theme !== "light") {
+      document.body.classList.add("bg-black");
+    }
     if (isLogin && healthyData?.dailyRate === "0") {
       setNotifyToast(true);
     }
@@ -45,7 +48,13 @@ function App() {
       dispatch(addGoogleAuth(userGoogleAuth));
     }
     dispatch(getCurrentRequest());
-  }, [dispatch]);
+
+    return () => {
+      if (theme === "dark") {
+        document.body.classList.remove("bg-black");
+      }
+    };
+  }, [dispatch, theme]);
 
   return (
     <>
