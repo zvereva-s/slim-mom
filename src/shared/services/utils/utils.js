@@ -30,15 +30,34 @@ export const rejected = (store, { payload }) => ({
 });
 
 export const getErrorMessage = (error) => {
-  if (error.data) {
-    const {
-      response: {
-        data: { message },
-      },
-    } = error;
-    return message;
+  let text = null;
+  let errorMessage = null;
+
+  if (error?.message) {
+    errorMessage = error.message;
+  } else {
+    errorMessage = error;
   }
-  return error;
+
+  switch (errorMessage.split(" ")[5]) {
+    case "401":
+      text = {
+        en: "Not Authorized",
+        ru: "Отсутствует авторизация",
+        ua: "Відсутня авторизація",
+      };
+      break;
+    case "409":
+      text = {
+        en: "Email in use",
+        ru: "Email используется",
+        ua: "Email використовується",
+      };
+      break;
+    default:
+      text = "Something goes wrong";
+  }
+  return text;
 };
 
 export const notify = (message, type) => {

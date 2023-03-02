@@ -8,15 +8,23 @@ import Button from "../../shared/components/Button";
 import ModalFormContent from "../../shared/components/ModalFormContent";
 import NotRecommendedProductList from "../../shared/components/NotRecommendedProductList";
 import Title from "../../shared/components/Title";
+import Loader from "../../shared/components/Loader";
 
 import s from "./dailyCaloriesInfo.module.scss";
 
-function DailyCaloriesInfo({ closeModal, dailyRate, handleClick, list }) {
+function DailyCaloriesInfo({
+  closeModal,
+  dailyRate,
+  handleClick,
+  list,
+  loading,
+}) {
   const { t } = useTranslate();
   const { theme } = useTheme();
 
   return (
     <ModalFormContent closeModal={closeModal}>
+      {loading && <Loader />}
       <div className={classNames(s.wrapper, s[`wrapper-${theme}`])}>
         <div
           className={classNames(s["wrapper-kcal"], s[`wrapper-kcal-${theme}`])}

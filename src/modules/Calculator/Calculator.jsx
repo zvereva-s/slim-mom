@@ -10,13 +10,18 @@ import { dailyRateUserRequest } from "../../redux/healthyData/healthyData-operat
 
 import { postDailyRate } from "../../shared/services/apis/daily-rate";
 
+import { notify, getErrorMessage } from "../../shared/services/utils/utils";
+
 import CalculatorСalorieForm from "./CalculatorСalorieForm/CalculatorСalorieForm";
 import DailyCaloriesInfo from "../DailyCaloriesInfo";
+import Loader from "../../shared/components/Loader";
 
 function Calculator() {
-  const { lang } = useTranslate();
+  const { t, lang } = useTranslate();
 
-  const { isLogin, user } = useAuthState();
+  let notification = null;
+
+  const { isLogin, user, token } = useAuthState();
   const { healthyData } = useSelector(healthyDataObj);
   const { dailyRate, notAllowedProducts } = healthyData;
 
@@ -72,17 +77,24 @@ function Calculator() {
     return isLogin ? navigate("/diary") : navigate("/signup");
   }
 
+  if ((isLogin && !token) || (dailyRate === "0" && token && isLogin)) {
+    notification = notify(t.infoToocmpleteCalculator, "info");
+  }
+
   return (
     <>
+      {loading && <Loader />}
       <CalculatorСalorieForm onSubmit={onSubmit} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error.message}</p>}
+      {error && notify(getErrorMessage(error), "error")}
+      {notification}
+
       {state.modal && (
         <DailyCaloriesInfo
           closeModal={closeModal}
           dailyRate={state.dailyRate}
           handleClick={handleClick}
           list={state.notAllowedProducts}
+          loading={loading}
         />
       )}
     </>

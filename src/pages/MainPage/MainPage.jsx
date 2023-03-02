@@ -4,7 +4,7 @@ import CalculatorPage from "../../pages/CalculatorPage";
 import DiaryPage from "../DiaryPage";
 
 function MainPage() {
-  const { isLogin } = useAuthState();
-  return <>{isLogin ? <DiaryPage /> : <CalculatorPage />}</>;
+  const { isLogin, token } = useAuthState();
+  return <>{isLogin && token ? <DiaryPage /> : <CalculatorPage />}</>;
 }
 export default MainPage;

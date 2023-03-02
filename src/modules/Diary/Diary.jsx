@@ -1,7 +1,7 @@
+import classNames from "classnames";
+
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useMediaPredicate } from "react-media-hook";
-import classNames from "classnames";
 
 import useTheme from "../../shared/hooks/useTheme";
 import useBreakpoints from "../../shared/hooks/useBreakpoints";
@@ -13,10 +13,18 @@ import {
 } from "../../redux/diary/diary-operations";
 import { summaryOfDayRequest } from "../../redux/healthyData/healthyData-operations";
 
-import { productListData, diaryDate } from "../../redux/diary/diary-selector";
+import {
+  productListData,
+  diaryDate,
+  diaryState,
+} from "../../redux/diary/diary-selector";
 
 import { getFoodList } from "../../shared/services/apis/diary";
-import { converToDate } from "../../shared/services/utils/utils";
+import {
+  converToDate,
+  notify,
+  getErrorMessage,
+} from "../../shared/services/utils/utils";
 
 import DiaryAddProductForm from "./DiaryAddProductForm";
 import DiaryAddProductFormMobile from "./DiaryAddProductForm/DiaryAddProductFormMobile/DiaryAddProductFormMobile";
@@ -24,6 +32,7 @@ import DiaryDateCalendar from "./DiaryDateСalendar";
 import DiaryProductList from "./DiaryProductsList";
 
 import Button from "../../shared/components/Button";
+import Loader from "../../shared/components/Loader";
 
 import s from "./diary.module.scss";
 
@@ -31,14 +40,14 @@ function Diary() {
   const { lang, t } = useTranslate();
   const { theme } = useTheme();
 
+  const { error, loading } = useSelector(diaryState);
+
   const [foodListForChoose, setFoodListForChoose] = useState([]);
 
   const [openModal, setOpenModal] = useState(false);
   const [openCalendar, setOpenCalendar] = useState(false);
 
   const { less768px, bigger768px } = useBreakpoints();
-  // const lessThan768 = useMediaPredicate("(max-width: 767px)");
-  // const biggerThan768 = useMediaPredicate("(min-width:768px");
 
   const dateValue = useSelector(diaryDate);
   const { year, month, day } = converToDate(dateValue);
@@ -129,14 +138,18 @@ function Diary() {
 
   return (
     <>
-      <div className={s.wrapper}>
-        <DiaryDateCalendar
-          onClick={toggleCalendar}
-          openCalendar={openCalendar}
-        />
-        {less768px && markupLessThan768}
-        {bigger768px && markupBiggerThan768}
-      </div>
+      {loading && <Loader typeClass="diary" />}
+      {error && notify(getErrorMessage(error), "error")}
+      {!loading && (
+        <div className={s.wrapper}>
+          <DiaryDateCalendar
+            onClick={toggleCalendar}
+            openCalendar={openCalendar}
+          />
+          {less768px && markupLessThan768}
+          {bigger768px && markupBiggerThan768}
+        </div>
+      )}
     </>
   );
 }

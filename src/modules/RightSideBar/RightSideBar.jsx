@@ -1,23 +1,27 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { summaryOfDayRequest } from "../../redux/healthyData/healthyData-operations";
+import useAuthState from "../../shared/hooks/useAuthState";
+import useTranslate from "../../shared/hooks/useTranslate";
 
+import { summaryOfDayRequest } from "../../redux/healthyData/healthyData-operations";
 import {
   healthyDataObj,
   summaryObj,
 } from "../../redux/healthyData/healthyData-selectors";
 import { diaryDate } from "../../redux/diary/diary-selector";
 
-import { converToDate } from "../../shared/services/utils/utils";
+import {
+  converToDate,
+  notify,
+  getErrorMessage,
+} from "../../shared/services/utils/utils";
 
 import RightSideListSummary from "./RightSideListSummary";
 import NotRecommendedProductList from "../../shared/components/NotRecommendedProductList";
-
-import useAuthState from "../../shared/hooks/useAuthState";
-import useTranslate from "../../shared/hooks/useTranslate";
+import Loader from "../../shared/components/Loader";
 
 import s from "./rightSideBar.module.scss";
-import { useEffect } from "react";
 
 function RightSideBar() {
   const { lang, t } = useTranslate();
@@ -30,7 +34,7 @@ function RightSideBar() {
 
   const { token } = useAuthState();
 
-  const { healthyData } = useSelector(healthyDataObj);
+  const { healthyData, error, loading } = useSelector(healthyDataObj);
   const { notAllowedProducts, dailyRate } = healthyData;
 
   const { left, consumed, procentOfDayNorm } = useSelector(summaryObj);
@@ -43,18 +47,24 @@ function RightSideBar() {
 
   return (
     <div className={s.wrapper}>
-      <RightSideListSummary
-        dailyRate={dailyRate}
-        date={date}
-        left={left}
-        consumed={consumed}
-        procentOfDayNorm={procentOfDayNorm}
-        t={t}
-      />
-      <NotRecommendedProductList
-        className={s.notRecommend}
-        list={notAllowedProducts?.[lang]}
-      />
+      {loading && <Loader />}
+      {error && notify(getErrorMessage(error), "error")}
+      {!loading && (
+        <>
+          <RightSideListSummary
+            dailyRate={dailyRate}
+            date={date}
+            left={left}
+            consumed={consumed}
+            procentOfDayNorm={procentOfDayNorm}
+            t={t}
+          />
+          <NotRecommendedProductList
+            className={s.notRecommend}
+            list={notAllowedProducts?.[lang]}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -107,8 +107,7 @@ code {
 }
 
 .wrapper__sign {
-    display: flex;
-    align-items: center;
+    @include flex();
 
     @include mq(mobile) {
         justify-content: center;

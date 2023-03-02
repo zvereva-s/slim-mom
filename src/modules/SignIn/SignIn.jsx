@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { ProgressBar } from "react-loader-spinner";
 
 import useAuthState from "../../shared/hooks/useAuthState";
+import useTranslate from "../../shared/hooks/useTranslate";
 
 import { signinRequest } from "../../redux/auth/auth-operations";
 import { getErrorMessage, notify } from "../../shared/services/utils/utils";
@@ -11,8 +12,9 @@ import SignInForm from "./SignInForm";
 function SignIn() {
   const dispatch = useDispatch();
   const { error, loading, verify } = useAuthState();
-  let errMessage = error ? getErrorMessage(error) : "";
-  
+  const { lang } = useTranslate();
+
+  let errMessage = error && getErrorMessage(error);
 
   function onSubmit(data) {
     dispatch(signinRequest(data));
@@ -35,7 +37,7 @@ function SignIn() {
       {loading && <div className="wrapper__sign">{loader}</div>}
       {!loading && <SignInForm onSubmit={onSubmit} />}
       {verify && notify("Succesfully have been verified", "success")}
-      {error && notify(errMessage, "error")}
+      {error && notify(errMessage[lang], "error")}
     </>
   );
 }

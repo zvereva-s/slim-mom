@@ -2,16 +2,12 @@
 
 .wrapper {
     @include flex();
+    padding-top: 30%;
 
-    @include mq(mobile) {
-        padding: 200px;
-    }
+    &-diary {
+        @include mq(desktop) {
+            padding-top: 22%;
+        }
 
-    @include mq(tablet) {
-        padding: 250px;
-    }
-
-    @include mq(desktop) {
-        padding: 300px;
     }
 }

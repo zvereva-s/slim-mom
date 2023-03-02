@@ -70,7 +70,7 @@ function DiaryAddProductForm({ dropdownList, onSubmit }) {
             type="submit"
             text={textBtn}
             className={styleBtn}
-            icon={!less768 && "plus"}
+            icon={!less768 ? "plus" : ""}
           />
         </div>
       </form>
