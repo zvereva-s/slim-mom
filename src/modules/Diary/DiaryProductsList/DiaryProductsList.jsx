@@ -1,22 +1,27 @@
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteProductRequest } from "../../../redux/diary/diary-operations";
 
 import useTheme from "../../../shared/hooks/useTheme";
 
+import { deleteProductRequest } from "../../../redux/diary/diary-operations";
+
 import DiaryProductsListItem from "./DiaryProductsListItem/DiaryProductsListItem";
+import Loader from "../../../shared/components/Loader/Loader";
 
 import s from "./diaryProductsList.module.scss";
 
-// виводить по условию на последнем элементе див с тенью /
-
-function DiaryProductsList({ products, t }) {
+function DiaryProductsList({ products, t, loading }) {
   const dispatch = useDispatch();
   const { theme } = useTheme();
+  const { productLoading, deleteProductLoading } = loading;
+
+  const [choosedId, setChoosedId] = useState();
 
   function deleteProduct(id) {
+    setChoosedId(id);
     dispatch(deleteProductRequest(id));
   }
 
@@ -30,18 +35,24 @@ function DiaryProductsList({ products, t }) {
           s[`wrapper-${styleForWrapper}`]
         )}
       >
-        <ul className={classNames(s.list, s[`list-${theme}`])}>
-          {products.map((product) => (
-            <DiaryProductsListItem
-              key={product._id}
-              name={product.name}
-              weight={product.weight}
-              sumCaloriesOfProduct={Math.round(product.sumCaloriesOfProduct)}
-              onClick={() => deleteProduct(product._id)}
-              t={t}
-            />
-          ))}
-        </ul>
+        {productLoading && <Loader typeClass="product" size="40" />}
+        {!productLoading && (
+          <ul className={classNames(s.list, s[`list-${theme}`])}>
+            {products.map((product) => (
+              <DiaryProductsListItem
+                key={product._id}
+                id={product._id}
+                name={product.name}
+                weight={product.weight}
+                sumCaloriesOfProduct={Math.round(product.sumCaloriesOfProduct)}
+                onClick={() => deleteProduct(product._id)}
+                t={t}
+                loading={deleteProductLoading}
+                choosedId={choosedId}
+              />
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useMediaPredicate } from "react-media-hook";
+import { ProgressBar } from "react-loader-spinner";
 import classNames from "classnames";
 
 import useForm from "./../../../shared/hooks/useForm";
@@ -13,9 +14,22 @@ import Dropdown from "../../../shared/components/Dropdown/Dropdown";
 import s from "./diaryAddProductForm.module.scss";
 const initialState = { name: "", weight: "" };
 
-function DiaryAddProductForm({ dropdownList, onSubmit }) {
+function DiaryAddProductForm({ dropdownList, onSubmit, loading }) {
   const { theme } = useTheme();
   const { t } = useTranslate();
+
+  const { addProductLoading } = loading;
+  const loader = (
+    <ProgressBar
+      height="50"
+      width="50"
+      ariaLabel="progress-bar-loading"
+      wrapperStyle={{}}
+      wrapperClass="progress-bar-wrapper"
+      borderColor="#FC842D"
+      barColor="#FC842D"
+    />
+  );
 
   const less768 = useMediaPredicate("(max-width: 767px)");
   const styleBtn = less768
@@ -66,12 +80,15 @@ function DiaryAddProductForm({ dropdownList, onSubmit }) {
           value={state.weight}
         />
         <div className={s.wrapper}>
-          <Button
-            type="submit"
-            text={textBtn}
-            className={styleBtn}
-            icon={!less768 ? "plus" : ""}
-          />
+          {addProductLoading && loader}
+          {!addProductLoading && (
+            <Button
+              type="submit"
+              text={textBtn}
+              className={styleBtn}
+              icon={!less768 ? "plus" : ""}
+            />
+          )}
         </div>
       </form>
     </div>

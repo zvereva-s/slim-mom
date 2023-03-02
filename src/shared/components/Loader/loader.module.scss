@@ -4,10 +4,10 @@
     @include flex();
     padding-top: 30%;
 
-    &-diary {
-        @include mq(desktop) {
-            padding-top: 22%;
-        }
 
+    &-product {
+        @include mq(desktop) {
+            padding-top: 10%;
+        }
     }
 }

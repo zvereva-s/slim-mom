@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { ProgressBar } from "react-loader-spinner";
 
 import useTheme from "../../../../shared/hooks/useTheme";
 
@@ -8,13 +9,31 @@ import Button from "../../../../shared/components/Button";
 import s from "./diaryProductsListItem.module.scss";
 
 function DiaryProductsListItem({
+  id,
   name,
   weight,
   sumCaloriesOfProduct,
   onClick,
   t,
+  loading,
+  choosedId,
 }) {
   const { theme } = useTheme();
+  const loader = (
+    <ProgressBar
+      height="30"
+      width="30"
+      ariaLabel="progress-bar-loading"
+      wrapperStyle={{}}
+      wrapperClass="progress-bar-wrapper"
+      borderColor="#FC842D"
+      barColor="#FC842D"
+    />
+  );
+
+  console.log({ choosedId });
+  console.log({ id });
+
   return (
     <li className={classNames(s.item, s[`item-${theme}`])}>
       <p
@@ -51,12 +70,15 @@ function DiaryProductsListItem({
           {t.kcal}
         </span>
       </p>
-      <Button
-        type="button"
-        className={classNames("button", `button-${theme}`)}
-        icon="close"
-        onClick={onClick}
-      />
+      {loading && id === choosedId && loader}
+      {!loading && (
+        <Button
+          type="button"
+          className={classNames("button", `button-${theme}`)}
+          icon="close"
+          onClick={onClick}
+        />
+      )}
     </li>
   );
 }

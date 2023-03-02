@@ -101,7 +101,9 @@ function Diary() {
 
   const markupLessThan768 = (
     <>
-      {products.length > 0 && <DiaryProductList products={products} t={t} />}
+      {products.length > 0 && (
+        <DiaryProductList products={products} t={t} loading={loading} />
+      )}
       <div className={classNames(s["wrapper-btn"], s[`wrapper-btn-${theme}`])}>
         <Button
           type="button"
@@ -121,6 +123,7 @@ function Diary() {
             closeModal={closeModal}
             dropdownList={foodListForChoose}
             onSubmit={onSubmit}
+            loading={loading}
           />
         )}
       </div>
@@ -131,16 +134,18 @@ function Diary() {
       <DiaryAddProductForm
         dropdownList={foodListForChoose}
         onSubmit={onSubmit}
+        loading={loading}
       />
-      {products.length > 0 && <DiaryProductList products={products} t={t} />}
+      {products.length > 0 && (
+        <DiaryProductList products={products} t={t} loading={loading} />
+      )}
     </>
   );
 
   return (
     <>
-      {loading && <Loader typeClass="diary" />}
       {error && notify(getErrorMessage(error), "error")}
-      {!loading && (
+      {!loading.diaryLoading && (
         <div className={s.wrapper}>
           <DiaryDateCalendar
             onClick={toggleCalendar}

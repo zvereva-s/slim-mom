@@ -5,7 +5,7 @@ import useBreakpoints from "../../hooks/useBreakpoints";
 
 import s from "./loader.module.scss";
 
-function Loader({ typeClass }) {
+function Loader({ typeClass, size }) {
   const { less768px } = useBreakpoints();
 
   return (
@@ -14,7 +14,7 @@ function Loader({ typeClass }) {
         strokeColor="grey"
         strokeWidth="5"
         animationDuration="0.75"
-        width={less768px ? "60" : "100"}
+        width={less768px ? "60" : size || "100"}
         visible={true}
       />
     </div>
