@@ -66,4 +66,8 @@ export const en = {
   highAdv: "high (training 30-60 min 5-7 times a week; hard physical work)",
   extremeAdv:
     "extreme (several intense workouts a day 6-7 times a week; very laborious work)",
+
+  //NOTIFICATIONS
+  infoToocmpleteCalculator:
+    "Please, complete calculator form. It'll count your daily rate",
 };
